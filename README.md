@@ -2,11 +2,11 @@
 Dave &amp; Jake's Fake News Generator
 Statement
 
-    We plan on implementing a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others. 
+   We plan on implementing a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others. 
 
 Analysis
 
-    At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into they're respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages. 
+   At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into they're respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages. 
     
 External Technologies
 
@@ -27,6 +27,11 @@ How will you convert your data into a form usable for your project?
 If you are pulling data from somewhere, actually go download it and look at it before writing the proposal. Explain in some detail what your plan is for accomplishing the necessary processing.
 
 If you are using some other starting materials, explain what they are. Basically: anything you plan to use that isn't code.
+
+
+
+
+
 Deliverable and Demonstration
 
 Explain exactly what you'll have at the end. What will it be able to do at the live demo?
@@ -42,10 +47,12 @@ How will you know if you are successful? If you include some kind of quantitativ
 Architecture Diagram
 
 Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
+![realnewsorfake](/realnewsorfake.png?raw=true "FAKE NEWS")
 
 Create several paragraphs of narrative to explain the pieces and how they interoperate.
-Schedule
 
+
+Schedule
 Explain how you will go from proposal to finished product.
 
 There are three deliverable milestones to explicitly define, below.
@@ -64,26 +71,15 @@ Which portion of the work will be completed (and committed to Github) by this da
 Public Presentation (Mon Apr 24, Wed Apr 26, or Fri Apr 28 [your date to be determined later])
 
 What additionally will be completed before the public presentation?
+
 Group Responsibilities
 
-Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. Include the milestones and final deliverable.
-
-Please use Github properly: each individual must make the edits to this file representing their own section of work.
-
-Additional instructions for teams of three:
-
-    Remember that you must have prior written permission to work in groups of three (specifically, an approved FP3 team declaration submission).
-    The team must nominate a lead. This person is primarily responsible for code integration. This work may be shared, but the team lead has default responsibility.
-    The team lead has full partner implementation responsibilities also.
-    Identify who is team lead.
+Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. 
+Include milestones and final deliverable.
 
 In the headings below, replace the silly names and GitHub handles with your actual ones.
-Susan Scheme @susanscheme
+David DaCosta @anti-dave
+will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
 
-will write the....
-Leonard Lambda @lennylambda
-
-will work on...
-Frank Funktions @frankiefunk
-
-Frank is team lead. Additionally, Frank will work on...
+Jacob Adamson @jake-the-human
+willl work on...
