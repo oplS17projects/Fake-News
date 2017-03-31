@@ -94,10 +94,25 @@ Upload the architecture diagram you made for your slide presentation to your rep
 ## Architecture Diagram
 ![realnewsorfake](/realnewsorfake.png?raw=true "FAKE NEWS")
 
+1. You can give are program a text file. Which should be filled with multiple news stories or with stories that you want spliced into the new genorated file.
+2. Or you will be able to give the program a website which should like to real news stories.
+
+   2a. The those stories will go though text file generator to get the data ready for the program to turn it into a Markov Model
+
+3. Next we make a markov model object which is a cons cell you can see this in more detail in the sections above. But a general idea is that it takes the file a extracts the string out of it and stores in in the car of the cons cell and you also give the constructor a integer which will be the order which is the size of the k-gram.
+4. Then we take the Markov model object and generate an output.
+  
+   4a. There will be special cases for unit testing. To confirm that the program is working properly.
+   
+   4b. We also will output the result of that we generated into a text file.
+
 Create several paragraphs of narrative to explain the pieces and how they interoperate.
 
 
-Schedule
+## Schedule
+- [ ] stuff to do
+- [x] stuff to do thats done
+
 Explain how you will go from proposal to finished product.
 
 There are three deliverable milestones to explicitly define, below.
@@ -123,8 +138,21 @@ Here each group member gets a section where they, as an individual, detail what 
 Include milestones and final deliverable.
 
 In the headings below, replace the silly names and GitHub handles with your actual ones.
-David DaCosta @anti-dave
-will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
 
-Jacob Adamson @jake-the-human
-will work on one the Markov Model Object and Unit Tests and I will be working on the evaluator as well.
+David DaCosta (@anti-dave)
+
+- [ ] Webscraping
+- [ ] Parsing Web Data
+- [ ] Evaluator
+
+I will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
+
+Jacob Adamson (@jake-the-human)
+
+- [ ] Markov Model Object
+- [ ] Unit Tests
+- [ ] Evaluator
+
+<!-- Links -->
+[schedule]: https://github.com/oplS17projects/FP-Schedule
+[markdown]: https://help.github.com/articles/markdown-basics/
