@@ -2,25 +2,12 @@
 Dave &amp; Jake's Fake News Generator
 Statement
 
-Describe your project. Why is it interesting? Why is it interesting to you personally? What do you hope to learn?
+    We plan on implementing a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others. 
+
 Analysis
 
-Explain what approaches from class you will bring to bear on the project.
-
-Be explicit about the techiques from the class that you will use. For example:
-
-    Will you use data abstraction? How?
-    Will you use recursion? How?
-    Will you use map/filter/reduce? How?
-    Will you use object-orientation? How?
-    Will you use functional approaches to processing your data? How?
-    Will you use state-modification approaches? How? (If so, this should be encapsulated within objects. set! pretty much should only exist inside an object.)
-    Will you build an expression evaluator, like we did in the symbolic differentatior and the metacircular evaluator?
-    Will you use lazy evaluation approaches?
-
-The idea here is to identify what ideas from the class you will use in carrying out your project.
-
-Your project will be graded, in part, by the extent to which you adopt approaches from the course into your implementation, and your discussion about this.
+    At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into they're respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages. 
+    
 External Technologies
 
 You are encouraged to develop a project that connects to external systems. For example, this includes systems that:
