@@ -4,11 +4,34 @@ Statement
 
    We plan on implementing a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others. 
 
-Analysis
+## Analysis
 
    At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into they're respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages. 
+   The Markov Model will be made up of a Constructor and other member function that will be outlined here. Which take a file and order. There is some procedural abstraction to get at parts of the object since it is stored in a cons cell we abstract it using car and cdr.
+   ```racket
+   (define (markModel file k)
+      (if (file-exists? file)
+         (cons (string-trim (file->string file)) k)
+         (error "file does not exits sorry")))
+         
+ (define (order mM)
+   (cdr mM))
+
+(define (kgram mM)
+  (car mM))
+  ; these are the other member function that only have 
+  ; rough drafts right now but mostly the return the number
+  ; of time a str or char are in the model
+  ; final gen generates teh probly of all the combinations
+(freqOfStr mM str)
+(freqOfChar mM c)
+(gen kStr lenKStr)
+   ```
+   
     
-External Technologies
+## External Technologies
+
+One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a halmark of functional programing.
 
 You are encouraged to develop a project that connects to external systems. For example, this includes systems that:
 
@@ -32,7 +55,7 @@ If you are using some other starting materials, explain what they are. Basically
 
 
 
-Deliverable and Demonstration
+## Deliverable and Demonstration
 
 Explain exactly what you'll have at the end. What will it be able to do at the live demo?
 
@@ -47,6 +70,7 @@ How will you know if you are successful? If you include some kind of quantitativ
 Architecture Diagram
 
 Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
+## Architecture Diagram
 ![realnewsorfake](/realnewsorfake.png?raw=true "FAKE NEWS")
 
 Create several paragraphs of narrative to explain the pieces and how they interoperate.
@@ -72,7 +96,7 @@ Public Presentation (Mon Apr 24, Wed Apr 26, or Fri Apr 28 [your date to be dete
 
 What additionally will be completed before the public presentation?
 
-Group Responsibilities
+## Group Responsibilities
 
 Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. 
 Include milestones and final deliverable.
