@@ -31,6 +31,7 @@ Statement
     
 ## External Technologies
 
+### Unit Testing
 One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a halmark of functional programing.
 
 You are encouraged to develop a project that connects to external systems. For example, this includes systems that:
