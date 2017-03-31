@@ -35,7 +35,7 @@ Statement
 One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a halmark of functional programing. Below is an example of one of are unit tests that we are going to use.
 ```racket
 (test-begin
- "Test string is a modified string from princeton"
+ "Test string is gagggagaggcgagaaa"
  (let ([mm (markModel "test.txt" 1)])
    (check = (order mm) 1)
    (check-not-equal? (order mm) 5)
