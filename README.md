@@ -82,4 +82,4 @@ David DaCosta @anti-dave
 will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
 
 Jacob Adamson @jake-the-human
-willl work on...
+will work on one the Markov Model Object and Unit Tests and I will be working on the evaluator as well.
