@@ -32,7 +32,27 @@ Statement
 ## External Technologies
 
 ### Unit Testing
-One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a halmark of functional programing.
+One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a halmark of functional programing. Below is an example of one of are unit tests that we are going to use.
+```racket
+(test-begin
+ "Test string is a modified string from princeton"
+ (let ([mm (markModel "test.txt" 1)])
+   (check = (order mm) 1)
+   (check-not-equal? (order mm) 5)
+   (check-equal? (kgram mm) "gagggagaggcgagaaa")
+   (check-not-equal? (kgram mm) "jakejakejakejake")
+   (check = (freqOfStr mm "j") 0)
+   (check = (freqOfStr mm "g") 9)
+   (check = (freqOfStr mm "a") 7)
+   (check = (freqOfStr mm "c") 1)
+   (check =  (freqOfChar mm "g" "a") 5)
+   (check =  (freqOfChar mm "g" "c") 1)
+   (check =  (freqOfChar mm "c" "g") 1)
+   (check =  (freqOfChar mm "g" "g") 3)
+   (check =  (freqOfChar mm "a" "a") 2)
+   ))
+   ```
+
 
 You are encouraged to develop a project that connects to external systems. For example, this includes systems that:
 
