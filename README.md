@@ -1,4 +1,4 @@
-# Fake-News :newspaper: :radio: :tv: :computer: 
+# :newspaper: :radio: Fake-News :tv: :computer: 
 Dave &amp; Jake's Fake News Generator 
 ## Statement
 
