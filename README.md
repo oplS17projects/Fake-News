@@ -9,10 +9,10 @@ Dave &amp; Jake's Fake News Generator
    At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into they're respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages. 
    The Markov Model will be made up of a Constructor and other member function that will be outlined here. Which take a file and order. There is some procedural abstraction to get at parts of the object since it is stored in a cons cell we abstract it using car and cdr.
    ```racket
-   (define (markModel file k)
-      (if (file-exists? file)
-         (cons (string-trim (file->string file)) k)
-         (error "file does not exits sorry")))
+(define (markModel file k)
+    (if (file-exists? file)
+       (cons (string-trim (file->string file)) k)
+       (error "file does not exits sorry")))
          
  (define (order mM)
    (cdr mM))
@@ -149,9 +149,11 @@ I will work on webscraping & efficiently as well as neatly organizing data that 
 Jacob Adamson (@jake-the-human)
 
 - [ ] Markov Model Object
+      - Which mean I will take the input and transform it in to the data need for the object
 - [ ] Unit Tests
+      - Validating both the Markov Model Object and any parsing function we write
 - [ ] Evaluator
-
+      -
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
 [markdown]: https://help.github.com/articles/markdown-basics/
