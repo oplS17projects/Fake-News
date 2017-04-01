@@ -137,7 +137,6 @@ What additionally will be completed before the public presentation?
 Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. 
 Include milestones and final deliverable.
 
-In the headings below, replace the silly names and GitHub handles with your actual ones.
 
 David DaCosta (@anti-dave)
 
