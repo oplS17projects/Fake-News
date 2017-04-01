@@ -110,7 +110,20 @@ Create several paragraphs of narrative to explain the pieces and how they intero
 
 
 ## Schedule
-- [ ] stuff to do
+
+### First Milestone (Sun Apr 9) 
+- [ ]
+By the first milestone, the plan is to have all the Markov Model object done and have it pass all the unit tests.
+
+### Second Milestone (Sun Apr 16)
+- [ ]
+By the second milestone, we hope to have the html parsing done and unit tested. Also we hope to have the Markov Model being able to generate fake news from a text file.
+
+### Public Presentation (Mon Apr 24, Wed Apr 26, or Fri Apr 28 [your date to be determined later])
+- [ ]
+For the public presentation, we will have ... fake news.
+
+
 - [x] stuff to do thats done
 
 Explain how you will go from proposal to finished product.
