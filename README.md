@@ -107,8 +107,6 @@ When the project is done we should have a fully functional fake news generator t
    4a. There will be special cases for unit testing to confirm that the program is working properly.
    
    4b. We will also output the result of that we generated into a text file.
-   
-   4c. We may elect to host a website to output the fake news, time allowing.
 
 
 ## Schedule
@@ -126,15 +124,18 @@ We hope to have the Markov Model able to generate at least semi comprehensible f
 For the public presentation, we will have a working fake news generator with some already generated news for people to look at.
 Our Block diagram and unit tests will demonstrate how our program works.
 
+## Stretch Goals
+
+- [ ] Web hosting for static website
+- [ ] Graphical User interface
+- [ ] Evaluator use
+
 ## Group Responsibilities
 
 David DaCosta (@anti-dave)
 
 - [ ] Web-scraping/Parsing Web Data
 - [ ] Unit testing any web-scraping functions
-- [ ] Leading Evaluator construction
-- [ ] Leading potential graphical user interface
-- [ ] Leading potential web hosting 
 
 Jacob Adamson (@jake-the-human)
 
@@ -142,8 +143,6 @@ Jacob Adamson (@jake-the-human)
       - Which means I will take the input and transform it in to the data need for the object.
 - [ ] Unit Tests
       - Validating both the Markov Model Object and any parsing function.
-- [ ] Evaluator
-      - Assisting Evaluator construction
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
 [markdown]: https://help.github.com/articles/markdown-basics/
