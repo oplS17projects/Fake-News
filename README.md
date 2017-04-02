@@ -122,7 +122,7 @@ Include milestones and final deliverable.
 David DaCosta (@anti-dave)
 
 - [ ] Webscraping/Parsing Web Data
-- [ ] Help Jake if need with Unit testing any webscraping functions
+- [ ] Unit Test -Help Jake if need with Unit testing any webscraping functions
 - [ ] Evaluator
 
 I will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
