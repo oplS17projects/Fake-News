@@ -126,9 +126,9 @@ Our Block diagram and unit tests will demonstrate how our program works.
 
 ## Stretch Goals
 
-- [ ] Web hosting for static website
-- [ ] Graphical User interface
-- [ ] Evaluator use
+- [:floppy_disk:] Web hosting for static website
+- [:floppy_disk:] Graphical User interface
+- [:floppy_disk:] Evaluator use
 
 ## Group Responsibilities
 
