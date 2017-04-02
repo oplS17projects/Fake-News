@@ -72,7 +72,14 @@ If you are pulling data from somewhere, actually go download it and look at it b
 
 If you are using some other starting materials, explain what they are. Basically: anything you plan to use that isn't code.
 
+We are going to be webscraping data from typical news outlets such as:
+"http://www.npr.org/"
+"http://www.huffingtonpost.com/"
+"http://www.cnn.com/"
+"http://www.usatoday.com/"
+"https://www.washingtonpost.com/"
 
+We are going to be looking for title elements, heading tags, footers, headers, & paragraph tags. At current understanding we will be storing these into their respective objects. By objects what we mean is that we'll most likely define lists of strings, where the strings will be of these categories, & then the list will be defined with it's respective and appropriate name. After the data is collected we will run the categorized bodies through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
 
 
 
