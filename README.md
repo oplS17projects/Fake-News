@@ -61,7 +61,7 @@ We are going to be webscraping data from typical news outlets such as:
 "https://www.washingtonpost.com/"
 
 Here is what url pulling & storage might look like:
-```
+```racket
 (require html)
 ;http://docs.racket-lang.org/html/
 (require html-parsing)
