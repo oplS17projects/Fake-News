@@ -2,12 +2,12 @@
 Dave &amp; Jake's Fake News Generator 
 ## Statement
 
-   We plan on implementing a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others. 
+   We plan on implementing a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from data collected by web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others.
 
 ## Analysis
 
-   At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into they're respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages. 
-   The Markov Model will be made up of a Constructor and other member function that will be outlined here. Which take a file and order. There is some procedural abstraction to get at parts of the object since it is stored in a cons cell we abstract it using car and cdr.
+   At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into their respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages.
+   The Markov Model will be made up of a constructor and other member functions that will be outlined here. Which take a file and order. There is some procedural abstraction to get at parts of the object since it is stored in a cons cell we abstract it using car and cdr.
    ```racket
 (define (markModel file k)
     (if (file-exists? file)
@@ -32,7 +32,7 @@ Dave &amp; Jake's Fake News Generator
 ## External Technologies
 
 ### Unit Testing
-One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a hallmark of functional programing. Below is an example of one of are unit tests that we are going to use.
+One of the external libs we are using is unit testing. We are using unit tests to prove that the behavior of our program is reliable and testable, which is a hallmark of functional programing. Below is an example of one of our unit tests.
 ```racket
 (test-begin
  "Test string is gagggagaggcgagaaa"
@@ -52,26 +52,7 @@ One of the external libs we are using is unit test. We are using them to prove t
    (check =  (freqOfChar mm "a" "a") 2)
    ))
    ```
-
-
-You are encouraged to develop a project that connects to external systems. For example, this includes systems that:
-
-    retrieve information or publish data to the web
-    generate or process sound
-    control robots or other physical systems
-    interact with databases
-
-If your project will do anything in this category (not only the things listed above!), include this section and discuss.
-Data Sets or other Source Materials
-
-If you will be working with existing data, where will you get those data from? (Dowload from a website? Access in a database? Create in a simulation you will build? ...)
-
-How will you convert your data into a form usable for your project?
-
-If you are pulling data from somewhere, actually go download it and look at it before writing the proposal. Explain in some detail what your plan is for accomplishing the necessary processing.
-
-If you are using some other starting materials, explain what they are. Basically: anything you plan to use that isn't code.
-
+   
 We are going to be webscraping data from typical news outlets such as:
 "http://www.npr.org/"
 "http://www.huffingtonpost.com/"
@@ -80,8 +61,6 @@ We are going to be webscraping data from typical news outlets such as:
 "https://www.washingtonpost.com/"
 
 We are going to be looking for title elements, heading tags, footers, headers, & paragraph tags. At current understanding we will be storing these into their respective objects. By objects what we mean is that we'll most likely define lists of strings, where the strings will be of these categories, & then the list will be defined with it's respective and appropriate name. After the data is collected we will run the categorized bodies through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
-
-
 
 ## Deliverable and Demonstration
 
