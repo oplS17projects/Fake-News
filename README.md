@@ -113,39 +113,35 @@ When the project is done we should have a fully functional fake news generator t
 
 ### First Milestone (Sun Apr 9) 
 - [ ]
-By the first milestone, the plan is to have all the Markov Model object done and have it pass all the unit tests.
+By the first milestone, the plan is to have all of the Markov Model object & Web scraping done and have both pass an acceptable amount of unit tests.
 
 ### Second Milestone (Sun Apr 16)
 - [ ]
-By the second milestone, we hope to have the html parsing done and unit tested. Also we hope to have the Markov Model being able to generate fake news from a text file.
+We hope to have the Markov Model able to generate at least semi comprehensible fake news from a text file.
 
 ### Public Presentation (Mon Apr 24, Wed Apr 26, or Fri Apr 28 [your date to be determined later])
 - [ ]
 For the public presentation, we will have a working fake news generator with some already generated news for people to look at.
-Block diagram and unit tests will demonstrate how are program works.
+Our Block diagram and unit tests will demonstrate how our program works.
 
 ## Group Responsibilities
-
-Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. 
-Include milestones and final deliverable.
-
 
 David DaCosta (@anti-dave)
 
 - [ ] Web-scraping/Parsing Web Data
-- [ ] Unit Tests -Help Jake if he needs help with Unit testing any web-scraping functions
-- [ ] Evaluator
-
-I will work on web-scraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
+- [ ] Unit testing any web-scraping functions
+- [ ] Leading Evaluator construction
+- [ ] Leading potential graphical user interface
+- [ ] Leading potential web hosting 
 
 Jacob Adamson (@jake-the-human)
 
 - [ ] Markov Model Object
-      - Which mean I will take the input and transform it in to the data need for the object
+      - Which means I will take the input and transform it in to the data need for the object.
 - [ ] Unit Tests
-      - Validating both the Markov Model Object and any parsing function we write
+      - Validating both the Markov Model Object and any parsing function.
 - [ ] Evaluator
-      - Help Dave if help is need
+      - Assisting Evaluator construction
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
 [markdown]: https://help.github.com/articles/markdown-basics/
