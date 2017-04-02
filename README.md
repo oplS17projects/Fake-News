@@ -134,14 +134,14 @@ Our Block diagram and unit tests will demonstrate how our program works.
 
 David DaCosta (@anti-dave)
 
-- [ ] Web-scraping/Parsing Web Data
-- [ ] Unit testing any web-scraping functions
+- :calling: Web-scraping/Parsing Web Data
+- :calling: Unit testing any web-scraping functions
 
 Jacob Adamson (@jake-the-human)
 
-- [ ] Markov Model Object
+- :cd: Markov Model Object
       - Which means I will take the input and transform it in to the data need for the object.
-- [ ] Unit Tests
+- :cd: Unit Tests
       - Validating both the Markov Model Object and any parsing function.
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
