@@ -85,7 +85,7 @@ We are going to be looking for title elements, heading tags, footers, headers, &
 
 ## Deliverable and Demonstration
 
-When the project is done we should have a fully functional fake news generator that will generate fake news by scraping real news off real news websites. All appropriate modules will be unit tested to prove functionality. When we live demo it we will have some demo fake news stories already generated for examples.
+When the project is done we should have a fully functional fake news generator that will generate fake news by scraping real news off of real news websites and creating false versions of the parts of a standard html article. All appropriate modules will be unit tested to prove functionality. During our live demo we will be showing some of the data that we collect and then we will run the generator and show a few fake articles.
 
 ## Architecture Diagram
 ![realnewsorfake](/realnewsorfake.png?raw=true "FAKE NEWS")
