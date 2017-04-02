@@ -78,19 +78,8 @@ If you are using some other starting materials, explain what they are. Basically
 
 ## Deliverable and Demonstration
 
-Explain exactly what you'll have at the end. What will it be able to do at the live demo?
+When the project is done we should have a fully fuctional fake news genorator that will generate fake news by scraping real news off real news websites. All appropriate modules will be unit tested to prove functionality. When we live demo it we will have some demo fake news stories already generated for examples.
 
-What exactly will you produce at the end of the project? A piece of software, yes, but what will it do? Here are some questions to think about (and answer depending on your application).
-
-Will it run on some data, like batch mode? Will you present some analytical results of the processing? How can it be re-run on different source data?
-
-Will it be interactive? Can you show it working? This project involves a live demo, so interactivity is good.
-Evaluation of Results
-
-How will you know if you are successful? If you include some kind of quantitative analysis, that would be good.
-Architecture Diagram
-
-Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
 ## Architecture Diagram
 ![realnewsorfake](/realnewsorfake.png?raw=true "FAKE NEWS")
 
@@ -153,8 +142,7 @@ Include milestones and final deliverable.
 
 David DaCosta (@anti-dave)
 
-- [ ] Webscraping
-- [ ] Parsing Web Data
+- [ ] Webscraping/Parsing Web Data
 - [ ] Evaluator
 
 I will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
@@ -166,7 +154,7 @@ Jacob Adamson (@jake-the-human)
 - [ ] Unit Tests
       - Validating both the Markov Model Object and any parsing function we write
 - [ ] Evaluator
-      -
+      - Help Dave if help is need
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
 [markdown]: https://help.github.com/articles/markdown-basics/
