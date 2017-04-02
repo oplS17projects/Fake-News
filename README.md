@@ -32,7 +32,7 @@ Dave &amp; Jake's Fake News Generator
 ## External Technologies
 
 ### Unit Testing
-One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a halmark of functional programing. Below is an example of one of are unit tests that we are going to use.
+One of the external libs we are using is unit test. We are using them to prove that the behavor of are program is relaible and test able which is a hallmark of functional programing. Below is an example of one of are unit tests that we are going to use.
 ```racket
 (test-begin
  "Test string is gagggagaggcgagaaa"
@@ -78,12 +78,12 @@ If you are using some other starting materials, explain what they are. Basically
 
 ## Deliverable and Demonstration
 
-When the project is done we should have a fully fuctional fake news genorator that will generate fake news by scraping real news off real news websites. All appropriate modules will be unit tested to prove functionality. When we live demo it we will have some demo fake news stories already generated for examples.
+When the project is done we should have a fully functional fake news generator that will generate fake news by scraping real news off real news websites. All appropriate modules will be unit tested to prove functionality. When we live demo it we will have some demo fake news stories already generated for examples.
 
 ## Architecture Diagram
 ![realnewsorfake](/realnewsorfake.png?raw=true "FAKE NEWS")
 
-1. You can give are program a text file. Which should be filled with multiple news stories or with stories that you want spliced into the new genorated file.
+1. You can give are program a text file. Which should be filled with multiple news stories or with stories that you want spliced into the new generated file.
 2. Or you will be able to give the program a website which should like to real news stories.
 
    2a. The those stories will go though text file generator to get the data ready for the program to turn it into a Markov Model
@@ -110,8 +110,8 @@ By the second milestone, we hope to have the html parsing done and unit tested. 
 
 ### Public Presentation (Mon Apr 24, Wed Apr 26, or Fri Apr 28 [your date to be determined later])
 - [ ]
-For the public presentation, we will have a working fake news genorator with some already generated news for poeple to look at.
-Block daigram and unit tests will demonstrate how are program works.
+For the public presentation, we will have a working fake news generator with some already generated news for people to look at.
+Block diagram and unit tests will demonstrate how are program works.
 
 ## Group Responsibilities
 
@@ -121,11 +121,11 @@ Include milestones and final deliverable.
 
 David DaCosta (@anti-dave)
 
-- [ ] Webscraping/Parsing Web Data
-- [ ] Unit Test -Help Jake if need with Unit testing any webscraping functions
+- [ ] Web-scraping/Parsing Web Data
+- [ ] Unit Tests -Help Jake if he needs help with Unit testing any web-scraping functions
 - [ ] Evaluator
 
-I will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
+I will work on web-scraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
 
 Jacob Adamson (@jake-the-human)
 
