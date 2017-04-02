@@ -110,29 +110,8 @@ By the second milestone, we hope to have the html parsing done and unit tested. 
 
 ### Public Presentation (Mon Apr 24, Wed Apr 26, or Fri Apr 28 [your date to be determined later])
 - [ ]
-For the public presentation, we will have ... fake news.
-
-
-- [x] stuff to do thats done
-
-Explain how you will go from proposal to finished product.
-
-There are three deliverable milestones to explicitly define, below.
-
-The nature of deliverables depend on your project, but may include things like processed data ready for import, core algorithms implemented, interface design prototyped, etc.
-
-You will be expected to turn in code, documentation, and data (as appropriate) at each of these stages.
-
-Write concrete steps for your schedule to move from concept to working system.
-First Milestone (Sun Apr 9)
-
-Which portion of the work will be completed (and committed to Github) by this day?
-Second Milestone (Sun Apr 16)
-
-Which portion of the work will be completed (and committed to Github) by this day?
-Public Presentation (Mon Apr 24, Wed Apr 26, or Fri Apr 28 [your date to be determined later])
-
-What additionally will be completed before the public presentation?
+For the public presentation, we will have a working fake news genorator with some already generated news for poeple to look at.
+Block daigram and unit tests will demonstrate how are program works.
 
 ## Group Responsibilities
 
@@ -143,6 +122,7 @@ Include milestones and final deliverable.
 David DaCosta (@anti-dave)
 
 - [ ] Webscraping/Parsing Web Data
+- [ ] Help Jake if need with Unit testing any webscraping functions
 - [ ] Evaluator
 
 I will work on webscraping & efficiently as well as neatly organizing data that is scraped. Dave will be leading evaluator construction. 
