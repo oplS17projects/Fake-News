@@ -108,8 +108,6 @@ When the project is done we should have a fully functional fake news generator t
    
    4b. We also will output the result of that we generated into a text file.
 
-Create several paragraphs of narrative to explain the pieces and how they interoperate.
-
 
 ## Schedule
 
