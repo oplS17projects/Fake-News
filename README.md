@@ -60,6 +60,33 @@ We are going to be webscraping data from typical news outlets such as:
 "http://www.usatoday.com/"
 "https://www.washingtonpost.com/"
 
+Here is what url pulling & storage might look like:
+```
+(require html)
+;http://docs.racket-lang.org/html/
+(require html-parsing)
+;https://docs.racket-lang.org/html-parsing/#%28part._.Interface%29
+(require net/url)
+;https://docs.racket-lang.org/net/url.html
+
+; Some of the symbols in html and xml conflict with
+; each other and with racket/base language, so we prefix
+; to avoid namespace conflict.
+(require (prefix-in h: html)
+         (prefix-in x: xml))
+
+;these are the ports created from urls' of some news outlets
+(define nprurl (string->url "http://www.npr.org/"))
+(define nprport (get-pure-port nprurl))
+
+(define huffposturl (string->url "http://www.huffingtonpost.com/"))
+(define huffpostport (get-pure-port huffposturl))
+
+;here we're creating html object instances of them
+(define npr-html (read-html nprport))
+(define huffpost-html (read-html huffpostport))
+```
+
 We are going to be looking for title elements, heading tags, footers, headers, & paragraph tags. At current understanding we will be storing these into their respective objects. By objects what we mean is that we'll most likely define lists of strings, where the strings will be of these categories, & then the list will be defined with it's respective and appropriate name. After the data is collected we will run the categorized bodies through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
 
 ## Deliverable and Demonstration
