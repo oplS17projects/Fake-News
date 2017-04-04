@@ -1,60 +1,68 @@
 #lang racket
-(require rackunit)
-;; make a cons cell one with the string and other is the k
-;; takes a file path and the k order of your model
-(define (markModel file k)
-  (if (file-exists? file)
-      (cons (string-trim (file->string file)) k)
-      (error "file does not exits sorry")))
 
-;; selectors
-(define (order mM)
-  (cdr mM))
+(define (MarkovModel text order)
+  (if (not (file-exists? text))
+      (error "File does not exist sorry!")
+      (let* ([news (string-trim (file->string text))]
+             [news-help (string-append news (substring news 0 (- order 1)))]; this will give use the circluar buffer affect
+             [news-ext (string-append news (substring news 0 order))]
+             [raw-kgram (sort (get-kgrams news-help order) string<?)]
+             [alpha (sort(string->list news)char<?)]
+             [kgram-offset (bucket order (sort (get-kgrams news-ext (+ order 1)) string<?))]
+             [alpha-freq (map (λ (n) (char-count n (remove-duplicates alpha))) kgram-offset)]
+             [total-char (accumulate-n + 0 alpha-freq)]
+             )
+        (list 'Mm
+              (list 'kgrams (remove-duplicates raw-kgram))
+              (list 'frq-kgram (filter-kgram raw-kgram))
+              (list 'total (list (foldr + 0 (filter-kgram raw-kgram))))
+              (list 'alpha (remove-duplicates alpha))
+              (list 'total-char total-char)
+              (list 'alpha-freq alpha-freq)
+              (list 'alpha-prob (map (λ (n) (char-prob n)) alpha-freq)))
+        )))
 
-(define (kgram mM)
-  (car mM))
+(define (get-kgrams str order)
+  (let ([count 0]) 
+    (if (< (string-length str) order)
+        '()
+        (cons (substring str count order)
+              (get-kgrams (substring str (add1 count)) order)))))
 
-;; apply regexp then length
-(define count-substring 
-  (compose length regexp-match*))
+(define (filter-kgram lst)
+  (if (empty? lst)
+      '()
+      (cons (count (λ (x) (equal? (car lst) x)) lst)
+            (filter-kgram (filter (λ (x) (not (string=? (car lst) x))) (cdr lst))))))
 
-(define (freqOfStr mM str)
-  (if (< (order mM) (string-length (kgram mM)))
-      (count-substring str (kgram mM))
-      (error "order is bigger then the length of the input so MarkModel can't be done")))
+(define (bucket order lst)
+  (define (bucketf num items)
+    (if (empty? items) (list (list num))
+        (let ((head (car items)))
+          (if (string=? (substring num 0 order) (substring (car head) 0 order))
+              (cons (cons num head) (cdr items))
+              (cons (list num) items)))))
+  (foldr bucketf '() lst))
 
-;;(define (freqOfChar mM c)
-;;  (if (< (order mM) (length (kgram mM)))
-;;      (foldr (λ (x lst) (+ (if (eq? x c) 1 0) lst)) 0 (string->list (kgram mM)))
-;;      (error "order is bigger then the length of the input so MarkModel can't be done")))
+;(char=? (last (string->list (car lst))) (car alpha)) 1 0
+(define (char-count kgram alpha)
+  (if (empty? alpha)
+      '()
+      (cons (count (λ (x) (char=? (last x) (car alpha))) (map string->list kgram)) 
+            (char-count kgram (cdr alpha)))))
 
-(define (freqOfChar mM str c)
-  (let ([x (string-append str c)])
-       (if (< (order mM) (string-length (kgram mM)))
-           (count-substring x (kgram mM))
-           (error "order is bigger then the length of the input so MarkModel can't be done"))))
+(define (accumulate-n op init seqs)
+  (if (null? (car seqs))
+      '()
+      (cons (foldr op init (map car seqs))
+            (accumulate-n op init (map cdr seqs)))))
 
-(define (gen kStr lenKStr) 1)
-  
-(define test  (markModel "test.txt" 3))
+(define (accumulate-tree tree term combiner null-value)
+  (cond [(empty? tree) null-value]
+        [(not (pair? tree)) (term tree)]
+        [else (combiner (accumulate-tree  (car tree) term combiner null-value)
+                        (accumulate-tree  (cdr tree) term combiner null-value))]))
 
-;;(define in (open-input-file "test.txt"))
-;;(define out (open-output-file "output.txt"))
-
-(test-begin
- "Test string is a modified string from princeton"
- (let ([mm (markModel "test.txt" 1)])
-   (check = (order mm) 1)
-   (check-not-equal? (order mm) 5)
-   (check-equal? (kgram mm) "gagggagaggcgagaaa")
-   (check-not-equal? (kgram mm) "jakejakejakejake")
-   (check = (freqOfStr mm "j") 0)
-   (check = (freqOfStr mm "g") 9)
-   (check = (freqOfStr mm "a") 7)
-   (check = (freqOfStr mm "c") 1)
-   (check =  (freqOfChar mm "g" "a") 5)
-   (check =  (freqOfChar mm "g" "c") 1)
-   (check =  (freqOfChar mm "c" "g") 1)
-   ;;(check =  (freqOfChar mm "g" "g") 3);;2 returning should be three
-   ;;(check =  (freqOfChar mm "a" "a") 2);;1 retrning should be 2
-   ))
+(define (char-prob lst)
+  (let ([temp (foldr + 0 lst)])
+    (map (λ (n) (/ n temp)) lst)))
