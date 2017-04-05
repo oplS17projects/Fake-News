@@ -1,5 +1,5 @@
 #lang racket
-(require rackunit)
+(require rackunit racket/random)
 
 (define (MarkovModel text order)
   ;;helper functions
@@ -41,6 +41,40 @@
   (define (char-prob lst)
     (let ([temp (foldr + 0 lst)])
       (map (λ (n) (/ n temp)) lst)))
+
+  ; prob index
+  (define (prob-alpha-help alpha-num char)
+    (if (= 0 alpha-num)
+        '()
+        (cons char (prob-alpha-help (sub1 alpha-num) char))))
+
+  (define (prob-helper alpha-lst alpha-frq)
+    (if (and(empty? alpha-lst)(empty? alpha-frq))
+        '()
+        (append (prob-alpha-help (car alpha-frq) (car alpha-lst))
+                (prob-helper (cdr alpha-lst) (cdr alpha-frq)))))
+
+(define (rando your-kgram the-lst-of-kgrams prob-helper)
+  (if (member your-kgram the-lst-of-kgrams)
+      (first (random-ref prob-helper)) 
+      ( error "sorry cant find your kgram." your-kgram)))
+; (list-ref prob-helper (remainder (random 0 4294967087) (length prob-helper))) old code holding onto just in case
+
+
+
+(define (gen fake-news new-kgram kgrams prob-helper length-of-news)
+  (if (< (sub1 length-of-news) (string-length fake-news))
+      fake-news
+      (begin
+        (let* ([new-char (make-string 1 (rando new-kgram kgrams prob-helper))]
+               [new-news (string-append (substring new-kgram 1)  new-char)])
+          (display (string-append  fake-news "+" new-char " ")) ;;  uncomment for testing
+          (gen (string-append fake-news  new-char)
+               (substring (string-append new-news new-char) 1)
+               kgrams
+               prob-helper
+               length-of-news)))))
+  
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; start of the object
   (if (not (file-exists? text))
@@ -50,17 +84,20 @@
              [news-ext (string-append news (substring news 0 order))]
              [raw-kgram (sort (get-kgrams news-help order) string<?)]
              [alpha (sort(string->list news)char<?)]
+             [alpha-abs (remove-duplicates alpha)]
              [kgram-offset (bucket order (sort (get-kgrams news-ext (+ order 1)) string<?))]
-             [alpha-freq (map (λ (n) (char-count n (remove-duplicates alpha))) kgram-offset)]
+             [alpha-freq (map (λ (n) (char-count n alpha-abs)) kgram-offset)]
              [total-char (accumulate-n + 0 alpha-freq)]
+             [prob-helper (map (λ (x) (prob-helper alpha-abs x)) alpha-freq)]
              [MarkovModel (list 'Mm
                                 (list 'kgrams (remove-duplicates raw-kgram))
                                 (list 'frq-kgram (filter-kgram raw-kgram))
                                 (list 'total (list (foldr + 0 (filter-kgram raw-kgram))))
-                                (list 'alpha (remove-duplicates alpha))
+                                (list 'alpha alpha-abs)
                                 (list 'total-char total-char)
                                 (list 'alpha-freq alpha-freq)
-                                (list 'alpha-prob (map (λ (n) (char-prob n)) alpha-freq)))])
+                                (list 'alpha-prob (map (λ (n) (char-prob n)) alpha-freq)))]
+             )
         (λ (message)
           (cond
             [(eq? 'obj message) MarkovModel]
@@ -73,9 +110,24 @@
             [(eq? 'alpha-prob message) (second (eighth MarkovModel))]
             [(eq? 'order message) order]
             [(eq? 'text message) news]
+            [(eq? 'prob-helper message) prob-helper] ;for testing
+            [(eq? 'get-the-news message)
+             (let ([start-kgram (random-ref (second (second MarkovModel)))])
+                 (gen start-kgram start-kgram (second (second MarkovModel)) prob-helper 11))]
             [else 'badMessage])))
-        
       ))
+
+;(gen fake-news new-kgram kgrams prob-helper length-of-news)
+
+(define a (MarkovModel "test.txt" 2))
+(define b (MarkovModel "test2.txt" 1))
+(define (test num)
+        (let ([t (random-ref (a 'kgram))])
+          (if (= 0 num)
+            'test-done
+            (begin (display (string-append ": " (a 'get-the-news)))(newline) (test (sub1 num))))))
+
+; (test 100)
 
 (test-begin
  "Test string order 1"
@@ -109,6 +161,7 @@
      (check =  (third kgram-g) 3) ; "gg"
      )
    ))
+
 
 (test-begin
  "Test string with order 2"
@@ -154,7 +207,7 @@
      (check =  (third kgram-gc) 1) ; "gcg"
      )
 
-      (let ([kgram-gg (sixth (mm 'alpha-freq))])
+   (let ([kgram-gg (sixth (mm 'alpha-freq))])
      (check =  (first kgram-gg) 1) ; "gga"
      (check =  (second kgram-gg) 1) ; "ggc"
      (check =  (third kgram-gg) 1) ; "ggg"
