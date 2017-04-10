@@ -112,8 +112,7 @@ When the project is done we should have a fully functional fake news generator t
 ## Schedule
 
 ### First Milestone (Sun Apr 9) 
-- [ ]
-By the first milestone, the plan is to have all of the Markov Model object & web scraping done and have both pass an acceptable amount of unit tests.
+- [x] By the first milestone, the plan is to have all of the Markov Model object & web scraping done and have both pass an acceptable amount of unit tests.
 
 ### Second Milestone (Sun Apr 16)
 - [ ]
