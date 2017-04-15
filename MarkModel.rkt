@@ -54,32 +54,44 @@
         (append (prob-alpha-help (car alpha-frq) (car alpha-lst))
                 (prob-helper (cdr alpha-lst) (cdr alpha-frq)))))
 
+
 (define (rando your-kgram the-lst-of-kgrams prob-helper)
+  (define (rando-helper your-kgram prob-helper the-lst-of-kgrams)
+    (if (equal? your-kgram (car the-lst-of-kgrams))
+        (car prob-helper)
+        (rando-helper your-kgram (cdr prob-helper )(cdr the-lst-of-kgrams))))
   (if (member your-kgram the-lst-of-kgrams)
-      (first (random-ref prob-helper)) 
+      (random-ref (rando-helper your-kgram prob-helper the-lst-of-kgrams))
       ( error "sorry cant find your kgram." your-kgram)))
 ; (list-ref prob-helper (remainder (random 0 4294967087) (length prob-helper))) old code holding onto just in case
 
 
 
-(define (gen fake-news new-kgram kgrams prob-helper length-of-news)
-  (if (< (sub1 length-of-news) (string-length fake-news))
-      fake-news
-      (begin
-        (let* ([new-char (make-string 1 (rando new-kgram kgrams prob-helper))]
-               [new-news (string-append (substring new-kgram 1)  new-char)])
-          (display (string-append  fake-news "+" new-char " ")) ;;  uncomment for testing
-          (gen (string-append fake-news  new-char)
-               (substring (string-append new-news new-char) 1)
-               kgrams
-               prob-helper
-               length-of-news)))))
+  (define (gen fake-news new-kgram kgrams prob-helper length-of-news)
+    (if (< (sub1 length-of-news) (string-length fake-news))
+        fake-news
+        (begin
+          (let* ([new-char (make-string 1 (rando new-kgram kgrams prob-helper))]
+                 [new-news (string-append (substring new-kgram 1)  new-char)])
+            ;;(display (string-append  fake-news "+" new-char " ")) ;;  uncomment for testing
+            (gen (string-append fake-news  new-char)
+                 new-news
+                 kgrams
+                 prob-helper
+                 length-of-news)))))
+
+
+(define (get-rid-doubles lst)
+  (if (and (= 2 (length lst)) (check-duplicates lst))
+      (remove-duplicates lst)
+      lst))
+
   
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; start of the object
   (if (not (file-exists? text))
       (error "File does not exist sorry!")
-      (let* ([news (string-trim (file->string text))]
+      (let* ([news (string-normalize-spaces (string-trim (file->string text)))]
              [news-help (string-append news (substring news 0 (- order 1)))]; this will give use the circluar buffer affect
              [news-ext (string-append news (substring news 0 order))]
              [raw-kgram (sort (get-kgrams news-help order) string<?)]
@@ -88,7 +100,7 @@
              [kgram-offset (bucket order (sort (get-kgrams news-ext (+ order 1)) string<?))]
              [alpha-freq (map (λ (n) (char-count n alpha-abs)) kgram-offset)]
              [total-char (accumulate-n + 0 alpha-freq)]
-             [prob-helper (map (λ (x) (prob-helper alpha-abs x)) alpha-freq)]
+             [prob-helper (map get-rid-doubles (map (λ (x) (prob-helper alpha-abs x)) alpha-freq))]
              [MarkovModel (list 'Mm
                                 (list 'kgrams (remove-duplicates raw-kgram))
                                 (list 'frq-kgram (filter-kgram raw-kgram))
@@ -112,22 +124,25 @@
             [(eq? 'text message) news]
             [(eq? 'prob-helper message) prob-helper] ;for testing
             [(eq? 'get-the-news message)
-             (let ([start-kgram (random-ref (second (second MarkovModel)))])
-                 (gen start-kgram start-kgram (second (second MarkovModel)) prob-helper 11))]
+             (λ (len)(let ([start-kgram (random-ref (second (second MarkovModel)))])
+               (gen start-kgram start-kgram (second (second MarkovModel)) prob-helper len)))]
             [else 'badMessage])))
       ))
 
 ;(gen fake-news new-kgram kgrams prob-helper length-of-news)
 
-(define a (MarkovModel "test.txt" 2))
-(define b (MarkovModel "test2.txt" 1))
-(define (test num)
-        (let ([t (random-ref (a 'kgram))])
-          (if (= 0 num)
-            'test-done
-            (begin (display (string-append ": " (a 'get-the-news)))(newline) (test (sub1 num))))))
 
-; (test 100)
+
+
+(define a (MarkovModel "test.txt" 2))
+(define b (MarkovModel "test2.txt" 2))
+(define (test num)
+  (let ([t (random-ref (a 'kgram))])
+    (if (= 0 num)
+        'test-done
+        (begin (display (string-append ": " (b 'get-the-news)))(newline) (test (sub1 num))))))
+
+(test 0)
 
 (test-begin
  "Test string order 1"
