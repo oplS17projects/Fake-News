@@ -1,5 +1,7 @@
 #lang racket
-(require "MarkModel.rkt")
+;(require "MarkModel.rkt" "web-scraper.rkt") ;real deal
+(require "MarkModel.rkt") ; just for testing
+
 
 (define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
 ;When UI becomes primary concern
@@ -16,67 +18,77 @@
                   (error "You need to enter a number.")))
 
 
-(define length-article-prompt "How long do you want the artcle: ")
+(define length-article-prompt "How long do you want the artcle. Must be greater then your order. ")
 (printf length-article-prompt)
 (newline)
-(define length-article (or (string->number (read-line))
-                           (error "You need to enter a number."))) ;; need to cast to an int
+(define length-article (or (> (string->number (read-line) order))
+                           (error "You need to enter a number.")))
+
+(define options-list '(obj kgram freq-kgram total alpha total-char alpha-freq get-the-news))
 
 (define options
   "(define fake-news (MarkovModel file-name.txt 7))
 7 = order of the model which is the length of kgrams
 
-(fake-news 'obj)
-return most of the imporant members in the object in the form of nested list
-but you can acces them all indivauly as well with keywords
+obj
+-return most of the imporant members in the object in the form of nested list
+-but you can acces them all indivauly as well with keywords
 
-(fake-news 'kgram)
-returns all the valid kgrams in the object
+kgram
+-returns all the valid kgrams in the object
 
-(fake-news 'freq-kgram)
-returns the freq of the kgrams
+freq-kgram
+-returns the freq of the kgrams
 
-(fake-news 'total)
+total
 the total number of each kgram
 
-(fake-news 'alpha)
-returns the all the char in the model
+alpha
+-returns the all the char in the model
 
-(fake-news 'total-char)
-return the total number of each char
+total-char
+-return the total number of each char
 
-(fake-news 'alpha-freq)
-the frequency of the char that follow a kgram
+alpha-freq
+-the frequency of the char that follow a kgram
 
-(fake-news 'order)
-returns the order
-
-(fake-news 'news)
-returns raw string of the input string
-
-((fake-news 'get-the-news) 250)
-250 is the numbers of char you want to generate
-this will generate the fake news
+get-the-news
+-250 is the numbers of char you want to generate
+-this will generate the fake news
 
 please enter one of the symbol that you want to pass in to the model
 
 ")
 
 
-(define message-prompt "input -o for option or write fake-news to just gen fake news")
+(define message-prompt "Input -o for option or write get-the-news to just gen fake news")
 (printf message-prompt)
 (newline)
 (define message (read-line))
 
 (define (users-op mess)
-  (if (equal? mess "-o")
-      (begin (display options)
-             (display "Which option would you like: ")
-             (newline)
-             (set! message (read-line)))
-      1))
+  (cond
+    [(equal? "get-the-news" mess) (begin (set! message (string->symbol mess)) message)]
+    [(equal? mess "-o")
+     (begin (display options)
+            (display "Which option would you like: ")
+            (newline)
+            (set! message (string->symbol (read-line))) message)]
+    [else (error "NOT valid input!!!")]))
+
+(define (mess-check mess)
+  (member mess options-list))
+
+(define fake-news 1)
 
 (define (main)
-  (users-op message))
-
+  (begin (users-op message)
+         (or (mess-check message) (error "Bad Message!"))
+         ;call parsing and stuff save it in to a file
+         (set! fake-news (MarkovModel "test.txt" order))
+         (set! fake-news ((fake-news message) length-article))
+         (define out (open-output-file "Fake-New.txt" #:exists 'replace))
+         (write fake-news out)
+         (close-output-port out)))
+;; FAKER NEWS
 (main)

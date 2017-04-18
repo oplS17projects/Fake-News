@@ -8,7 +8,8 @@
          web-server/servlet
          web-server/servlet-env)
 
-;(require "markov.rkt")
+(require (file "MarkModel.rkt"))
+(provide (all-defined-out))
 
 ;Web scraper & Formatter
 
