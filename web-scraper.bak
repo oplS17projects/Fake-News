@@ -8,8 +8,7 @@
          web-server/servlet
          web-server/servlet-env)
 
-(require (file "MarkModel.rkt"))
-(provide (all-defined-out))
+(require "markov.rkt")
 
 ;Web scraper & Formatter
 
@@ -98,9 +97,9 @@
 (close-output-port out)
 
 ;call markov model on foodforMarkov here
-;(define z (MarkovModel "foodforMarkov.txt" 7) )
-;(define fakenews ((z 'get-the-news) 550))
-(define fakenews "hey")
+(define z (MarkovModel "foodforMarkov.txt" 7) )
+(define fakenews ((z 'get-the-news) 550))
+
 ;put stuff on website
 (serve/servlet mypage
                  #:extra-files-paths
