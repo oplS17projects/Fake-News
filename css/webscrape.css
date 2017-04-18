@@ -1,0 +1,74 @@
+/*!   How should this be   */
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+header {
+  text-align: center;
+  background: #000000;
+  color: white;
+}
+header .container {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+header .intro-text .sitename {
+  display: block;
+  font-family: 'Lobster', cursive;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 2em;
+}
+header .intro-text .quote {
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+
+p {
+  font-size: 20px;
+}
+p.small {
+  font-size: 16px;
+}
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+  color: #000000;
+}
+
+hr.line {
+  padding: 0;
+  border: none;
+  border-top: solid 5px;
+  text-align: center;
+  max-width: 250px;
+  margin: 25px auto 30px;
+}
+hr.line{
+  content: "\f005";
+  font-family: FontAwesome;
+  display: inline-block;
+  position: relative;
+  top: -0.8em;
+  font-size: 2em;
+  padding: 0 0.25em;
+}
+hr.line {
+  border-color: #000000;
+}
