@@ -8,8 +8,7 @@
          web-server/servlet
          web-server/servlet-env)
 
-;DrRacket on my machine won't run this dependancy
-;(require "markov.rkt")
+(require "markov.rkt")
 
 ;Web scraper & Formatter
 
@@ -20,7 +19,7 @@
   
 (define (mypage req)
   (response/xexpr
-   `(html (head (title "DONNY T'S FAKE NEWS MACHINE")
+   `(html (head (title "UML INFOWARS")
                 (link ((rel "stylesheet")
                        (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
                        (type "text/css")))
@@ -35,9 +34,9 @@
                         (div ((class "row"))
                              (div ((class "col-lg-12"))
                                        (h1 ((class "sitename"))
-                                           "UML PUBLIC RADIO")
+                                           "UML INFO WARS")
                                        (h3 ((class "quote"))
-                                              " Blurring the lines ") ) ) ) )
+                                              " Democracy is but Mob Rule ") ) ) ) )
                      
            (hr ((class "line")))
            (div ((class "container"))
@@ -49,7 +48,7 @@
                      (div ((class "col-md-6 col-centered"))
                           (div ((class "text-centered"))
                                (h3 "Fake News"))
-                          ,mynews  )))   ))) )
+                          ,fakenews  )))   ))) )
 
 (define root (current-directory))
 
@@ -98,12 +97,12 @@
 (close-output-port out)
 
 ;call markov model on foodforMarkov here
-;Jake said these are the commands to run his markov, but I couldn't get it to work
-;(define z (MarkovModel "foodforMarkov.txt" 7) )
-;(a 'get-the-news)
+(define z (MarkovModel "foodforMarkov.txt" 7) )
+(define fakenews ((z 'get-the-news) 550))
 
 ;put stuff on website
 (serve/servlet mypage
                  #:extra-files-paths
                  (list
                   (build-path root "css")))
+
