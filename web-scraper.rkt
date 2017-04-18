@@ -8,6 +8,7 @@
          web-server/servlet
          web-server/servlet-env)
 
+;DrRacket on my machine won't run this dependancy
 ;(require "markov.rkt")
 
 ;Web scraper & Formatter
@@ -97,7 +98,9 @@
 (close-output-port out)
 
 ;call markov model on foodforMarkov here
+;Jake said these are the commands to run his markov, but I couldn't get it to work
 ;(define z (MarkovModel "foodforMarkov.txt" 7) )
+;(a 'get-the-news)
 
 ;put stuff on website
 (serve/servlet mypage
