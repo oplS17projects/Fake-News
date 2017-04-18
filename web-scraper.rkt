@@ -8,28 +8,47 @@
          web-server/servlet
          web-server/servlet-env)
 
+;(require "markov.rkt")
+
 ;Web scraper & Formatter
 
-;Samples
+;Sample news
 ;http://www.npr.org/2017/04/06/522747322/first-listen-sexmob-cultural-capital
-
-(define realnews  "Real news will go here")
-
-(define fakenews "Fake news will go here")
-
+;https://www.washingtonpost.com/world/asia_pacific/pence-makes-surprise-stop-to-demilitarized-zone-during-korea-trip/2017/04/16/e1da822e-230e-11e7-a1b3-faff0034e2de_story.html?hpid=hp_hp-top-table-main_nkorea0418-425am%3Ahomepage%2Fstory&utm_term=.9c0ce8806f38
+;https://www.washingtonpost.com/world/national-security/trump-calls-turkeys-erdogan-to-congratulate-him-on-contested-referendum/2017/04/17/f997d306-2397-11e7-a1b3-faff0034e2de_story.html?hpid=hp_hp-top-table-main_usturkey-8pm%3Ahomepage%2Fstory&utm_term=.204a17b06086
+  
 (define (mypage req)
   (response/xexpr
    `(html (head (title "DONNY T'S FAKE NEWS MACHINE")
-          (body (div ((class "jumbotron text-center"))
-                     (h1 "FAKENEWS"))
-                (div ((class "container"))
-                     (div ((class "row"))
-                          (div ((class "col-xs-6 col-centered text-center"))
-                               (h2 "Real News")
-                               (p "Article before being run through markov Model"))
-                          (div ((class "col-xs-6 col-centered text-center"))
-                               (h2 "Fake News")
-                               (p "Article after having been run through markov model")))))))))
+                (link ((rel "stylesheet")
+                       (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+                       (type "text/css")))
+                (link ((rel "stylesheet")
+                       (href "/webscrape.css")
+                       (type "text/css")))
+                (script ((src "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")))
+                (script ((src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"))))
+          (body
+           (header 
+                   (div ((class "container"))
+                        (div ((class "row"))
+                             (div ((class "col-lg-12"))
+                                       (h1 ((class "sitename"))
+                                           "UML PUBLIC RADIO")
+                                       (h3 ((class "quote"))
+                                              " Blurring the lines ") ) ) ) )
+                     
+           (hr ((class "line")))
+           (div ((class "container"))
+                (div ((class "row"))
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Real News"))
+                          ,mynews )
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Fake News"))
+                          ,mynews  )))   ))) )
 
 (define root (current-directory))
 
@@ -38,43 +57,50 @@
 
 (define input-prompt "Enter REAL NEWS:  ")
 
-(define (list-walk-print listn)
-  (if (null? listn)
-      " "
-      (begin
-        (write (car listn) out)
-        (newline out)
-        (list-walk-print (cdr listn)))))
+(define out (open-output-file "foodforMarkov.txt" #:exists 'update))
 
-(define out (open-output-file "foodforMarkov.txt"))
+;When UI becomes primary concern
+;(prompt-for-input input-prompt)
+;(define input (read-line))
 
-;driver
-(define (driver-loop)
-  (begin
+;for Testing
+(define input  "https://www.washingtonpost.com/world/national-security/trump-calls-turkeys-erdogan-to-congratulate-him-on-contested-referendum/2017/04/17/f997d306-2397-11e7-a1b3-faff0034e2de_story.html?hpid=hp_hp-top-table-main_usturkey-8pm%3Ahomepage%2Fstory&utm_term=.204a17b06086" )
+(define myurl (string->url input))  
+(define myport (get-pure-port myurl))
+(define myxexp (html->xexp myport))
+
+;preprocess list of xexpressions
+(define prelist (se-path*/list '(p) myxexp) ) 
+
+; map into a list of strings
+(define postlist (map (lambda (n) (xexpr->string n) ) prelist) )
+
+;Filter to remove anything with a tag... as predicate only returns true if no tag
+(define penultlist (filter (lambda (n)
+                             (if (> (string-length n) 1)
+                                 (not (equal? (string-ref n 0) #\<))
+                                 #f))
+                           postlist))
+
+; map into a list of strings
+(define stringlist (map (lambda (n) (string-trim n) ) penultlist) )
+
+(define (recurse-append lst)
+  (if (null? lst)
+      "\0"
+      (string-append (car lst) (recurse-append (cdr lst)))))
+
+(define mynews (recurse-append stringlist ) )
+
+(write mynews out)
     
-    (prompt-for-input input-prompt)
-    
-    (define input (read-line))
-    
-    (define myurl (string->url input))
-   
-    (define myport (get-pure-port myurl))
+(close-output-port out)
 
-    (define mylist (html->xexp myport))
+;call markov model on foodforMarkov here
+;(define z (MarkovModel "foodforMarkov.txt" 7) )
 
-    (list-walk-print
-     (se-path*/list '(title) mylist) )
-
-    (list-walk-print
-     (se-path*/list '(p) mylist) )
-    ;we need to filter stuff
-    ;(remove* (lambda (lst) equal? lst) )
-
-    (close-output-port out)
-
-    ;call markov model on foodforMarkov here
-
-    ;put stuff on website
-    (serve/servlet mypage)))
-
-(driver-loop)
+;put stuff on website
+(serve/servlet mypage
+                 #:extra-files-paths
+                 (list
+                  (build-path root "css")))
