@@ -123,7 +123,7 @@
             [(eq? 'text message) news]
             [(eq? 'prob-helper message) prob-helper] ;for testing
             [(eq? 'get-the-news message)
-             (λ (len)(let ([start-kgram (random-ref (second (second MarkovModel)))])
+             (λ (len)(let ([start-kgram (substring news 0 order)])
                (gen start-kgram start-kgram (second (second MarkovModel)) prob-helper len)))]
             [else 'badMessage])))
       )
