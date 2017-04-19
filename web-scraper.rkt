@@ -20,7 +20,7 @@
   
 (define (mypage req)
   (response/xexpr
-   `(html (head (title "UML INFOWARS")
+   `(html (head (title "UML INFOWARS II : Faker News!")
                 (link ((rel "stylesheet")
                        (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
                        (type "text/css")))
