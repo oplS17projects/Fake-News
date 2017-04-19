@@ -1,5 +1,5 @@
 #lang racket
-(require "MarkModel.rkt" "get_url_return_news.rkt" "web-scraper.rkt") ;real deal
+(require "MarkModel.rkt" "get_url_return_news.rkt") ;real deal
 ;(require "MarkModel.rkt") ; just for testing
 
 
@@ -21,7 +21,7 @@
 (define length-article-prompt "How long do you want the artcle. Must be greater then your order. ")
 (printf length-article-prompt)
 (newline)
-(define length-article (or (> (string->number (read-line) order))
+(define length-article (or (string->number (read-line))
                            (error "You need to enter a number.")))
 
 (define options-list '(obj kgram freq-kgram total alpha total-char alpha-freq get-the-news))
