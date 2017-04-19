@@ -90,9 +90,7 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; start of the object
-  (if (not (file-exists? text))
-      (error "File does not exist sorry!")
-      (let* ([news (string-normalize-spaces (string-trim (file->string text)))]
+  (let* ([news (string-normalize-spaces (string-trim  text))]
              [news-help (string-append news (substring news 0 (- order 1)))]; this will give use the circluar buffer affect
              [news-ext (string-append news (substring news 0 order))]
              [raw-kgram (sort (get-kgrams news-help order) string<?)]
@@ -128,7 +126,7 @@
              (λ (len)(let ([start-kgram (random-ref (second (second MarkovModel)))])
                (gen start-kgram start-kgram (second (second MarkovModel)) prob-helper len)))]
             [else 'badMessage])))
-      ))
+      )
 
 #| how to run this
 (define fake-news (MarkovModel "file-name.txt" 7))

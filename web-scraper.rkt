@@ -8,7 +8,7 @@
          web-server/servlet
          web-server/servlet-env)
 
-(require (file "MarkModel.rkt"))
+;(require (file "MarkModel.rkt"))
 (provide (all-defined-out))
 
 ;Web scraper & Formatter
@@ -58,7 +58,7 @@
 
 (define input-prompt "Enter REAL NEWS:  ")
 
-(define out (open-output-file "foodforMarkov.txt" #:exists 'update))
+(define out (open-output-file "foodforMarkov.txt" #:exists 'replace))
 
 ;When UI becomes primary concern
 ;(prompt-for-input input-prompt)

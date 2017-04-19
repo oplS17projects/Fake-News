@@ -1,9 +1,11 @@
 #lang racket
-(require rackunit)
+(require rackunit "MarkModel.rkt")
+
+
 
 (test-begin
  "Test string order 1"
- (let ([mm (MarkovModel "test.txt" 1)])
+ (let ([mm (MarkovModel (string-normalize-spaces (string-trim (file->string "test.txt"))) 1)])
 
    (check = (mm 'order) 1)
    (check-not-equal? (mm 'order) 5)
@@ -37,7 +39,7 @@
 
 (test-begin
  "Test string with order 2"
- (let ([mm (MarkovModel "test.txt" 2)])
+ (let ([mm (MarkovModel (string-normalize-spaces (string-trim (file->string "test.txt"))) 2)])
 
    (check = (mm 'order) 2)
    (check-equal? (mm 'text) "gagggagaggcgagaaa")

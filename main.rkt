@@ -1,6 +1,6 @@
 #lang racket
-;(require "MarkModel.rkt" "web-scraper.rkt") ;real deal
-(require "MarkModel.rkt") ; just for testing
+(require "MarkModel.rkt" "get_url_return_news.rkt" "web-scraper.rkt") ;real deal
+;(require "MarkModel.rkt") ; just for testing
 
 
 (define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
@@ -84,11 +84,12 @@ please enter one of the symbol that you want to pass in to the model
 (define (main)
   (begin (users-op message)
          (or (mess-check message) (error "Bad Message!"))
-         ;call parsing and stuff save it in to a file
-         (set! fake-news (MarkovModel "test.txt" order))
+         
+         (set! fake-news (MarkovModel (get-url-return-news input-news) order))
          (set! fake-news ((fake-news message) length-article))
          (define out (open-output-file "Fake-New.txt" #:exists 'replace))
          (write fake-news out)
          (close-output-port out)))
 ;; FAKER NEWS
 (main)
+;; fuction that call the website
