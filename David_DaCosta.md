@@ -1,14 +1,35 @@
-The report should provide an overview of your project, and then narrate your own code contributions.
+# Web parsing & servlet hosting for Fake News Generator
 
-You must highlight how your code embodies the ideas of the course.
-    
-Your report should name and briefly describe any libraries or external technology used.
-   
-Please see Analysis for discussion of what to highlight.
+## David DaCosta
+### April 22, 2017
 
-Libraries: xml, xml/path, net/url, html-parsing, html,  web-server/servlet, web-server/servlet-env
+# Overview
 
-Map & Filter
+**Authorship note:** All of the code described here was written by myself.
+# Libraries Used
+The code uses these libraries:
+
+```
+(require xml
+         xml/path
+         net/url
+         html-parsing
+         html)
+         
+(require web-server/servlet
+         web-server/servlet-env)
+```
+
+* The ```net/url``` library provides the ability to make REST-style https queries to the Google Drive API.
+
+# Key Code Excerpts
+
+Here is a discussion of the most essential procedures, including a description of how they embody ideas from 
+UMass Lowell's COMP.3010 Organization of Programming languages course.
+
+Five examples are shown and they are individually numbered. 
+
+## 1. Map & Filter
 ```racket
 ;establish url x expression from input string
 (define myurl (string->url input))  
@@ -24,7 +45,7 @@ Map & Filter
 ;remove pre news body noise
 (define almostlist (filter-pre-news-noise postlist) )
 ```
-Recursion, list traversal
+## 2. Recursion, list traversal
 ```racket
 ;Finally build final string to return
 (define mynews (recurse-append stringlist ) )
@@ -35,7 +56,7 @@ Recursion, list traversal
         (string-append (car lst) (recurse-append (cdr lst)))))
 ```
         
-Procedural Abstraction / Filter / Lambda
+## 3. Procedural Abstraction / Filter / Lambda
 ```racket
 (define (length-mean-news? teststring)
 (> (string-length teststring) 114) )
@@ -52,7 +73,7 @@ Procedural Abstraction / Filter / Lambda
           alist))
 ```
 
-Helper Functions / Procedural Abstraction
+## 4. Helper Functions / Procedural Abstraction
 ```racket
 ;make sure we're only dealign with the news,
 ;get rid of anything before
