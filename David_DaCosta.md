@@ -3,15 +3,12 @@ The report should provide an overview of your project, and then narrate your own
 You must highlight how your code embodies the ideas of the course.
     
 Your report should name and briefly describe any libraries or external technology used.
-    
-Focus on your own contributions to the project.
-    
+   
 Please see Analysis for discussion of what to highlight.
-    
-See this example of what a report might look like.
 
-You should highlight three to five code excerpts.
-    
+Libraries: xml, xml/path, net/url, html-parsing, html,  web-server/servlet, web-server/servlet-env
+
+Map & Filter
 ```racket
 ;establish url x expression from input string
 (define myurl (string->url input))  
@@ -27,7 +24,7 @@ You should highlight three to five code excerpts.
 ;remove pre news body noise
 (define almostlist (filter-pre-news-noise postlist) )
 ```
-    
+Recursion, list traversal
 ```racket
 ;Finally build final string to return
 (define mynews (recurse-append stringlist ) )
@@ -38,8 +35,7 @@ You should highlight three to five code excerpts.
         (string-append (car lst) (recurse-append (cdr lst)))))
 ```
         
-    
-    
+Procedural Abstraction / Filter / Lambda
 ```racket
 (define (length-mean-news? teststring)
 (> (string-length teststring) 114) )
@@ -56,6 +52,7 @@ You should highlight three to five code excerpts.
           alist))
 ```
 
+Helper Functions / Procedural Abstraction
 ```racket
 ;make sure we're only dealign with the news,
 ;get rid of anything before
@@ -68,5 +65,39 @@ You should highlight three to five code excerpts.
 (define (now-parse-the-goods listofstrings)
   (filter-tags-brute-force listofstrings) )
   ```
-
-Make it clear who wrote the code that you are highlighting. Ideally it's your code. But if you are writing about your partner's code, say so.
+  
+```racket
+(define (mypage req)
+(response/xexpr
+`(html (head (title "UML INFOWARS II : Faker News!")
+                (link ((rel "stylesheet")
+                       (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+                       (type "text/css")))
+                (link ((rel "stylesheet")
+                       (href "/webscrape.css")
+                       (type "text/css")))
+                (script ((src "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")))
+                (script ((src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"))))
+          (body
+           (header 
+                   (div ((class "container"))
+                        (div ((class "row"))
+                             (div ((class "col-lg-12"))
+                                       (h1 ((class "sitename"))
+                                           "UML INFO WARS")
+                                       (h3 ((class "quote"))
+                                              " Democracy is but Mob Rule ") ) ) ) )
+                     
+           (hr ((class "line")))
+           (div ((class "container"))
+                (div ((class "row"))
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Real News"))
+                          ,mynews )
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Fake News"))
+                          ,fakenews  )))   ))) )
+```
+  
