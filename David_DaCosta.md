@@ -1,16 +1,17 @@
-    The report should provide an overview of your project, and then narrate your own code contributions.
+The report should provide an overview of your project, and then narrate your own code contributions.
+
+You must highlight how your code embodies the ideas of the course.
     
-    You must highlight how your code embodies the ideas of the course.
+Your report should name and briefly describe any libraries or external technology used.
     
-    Your report should name and briefly describe any libraries or external technology used.
+Focus on your own contributions to the project.
     
-    Focus on your own contributions to the project.
+Please see Analysis for discussion of what to highlight.
     
-    Please see Analysis for discussion of what to highlight.
+See this example of what a report might look like.
+
+You should highlight three to five code excerpts.
     
-    See this example of what a report might look like.
-    
-    You should highlight three to five code excerpts.
     ```racket
     ;establish url x expression from input string
     (define myurl (string->url input))  
@@ -40,9 +41,9 @@
         
     
     
-    ```racket
-    (define (length-mean-news? teststring)
-  (> (string-length teststring) 114) )
+```racket
+(define (length-mean-news? teststring)
+(> (string-length teststring) 114) )
 
 (define (is-this-the-end? teststring)
   (< (string-length teststring) 50) )
@@ -54,8 +55,9 @@
                 (not (equal? (string-ref n 0) #\<))
                 #f))
           alist))
-    ```
+```
 
+```racket
 ;make sure we're only dealign with the news,
 ;get rid of anything before
 (define (filter-pre-news-noise mylistofstrings)
@@ -67,8 +69,5 @@
 (define (now-parse-the-goods listofstrings)
   (filter-tags-brute-force listofstrings) )
   ```
-
-    
-    
 
 Make it clear who wrote the code that you are highlighting. Ideally it's your code. But if you are writing about your partner's code, say so.
