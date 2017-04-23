@@ -60,7 +60,7 @@ We are going to be webscraping data from typical news outlets such as:
 "http://www.usatoday.com/"
 "https://www.washingtonpost.com/"
 
-Here is what url pulling & storage might look like:
+Here is what url pulling looks like4\:
 ```racket
 (define (get-url-return-news input)
   (begin
