@@ -2,7 +2,7 @@
 (require web-server/servlet
          web-server/servlet-env
          "get-url-return-news.rkt")
-
+;(provide (all-defined-out))
 (provide infowars)
 
 (define (mypage req)
