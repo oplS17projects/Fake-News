@@ -2,7 +2,7 @@
 (require "MarkModel.rkt" "get_url_return_news.rkt") ;real deal
 ;(require "MarkModel.rkt") ; just for testing
 
-
+;; gets input from users
 (define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
 ;When UI becomes primary concern
 (printf  input-prompt)
@@ -66,6 +66,7 @@ please enter one of the symbol that you want to pass in to the model
 (newline)
 (define message (read-line))
 
+;; checks user input for options and to see if it is valid
 (define (users-op mess)
   (cond
     [(equal? "get-the-news" mess) (begin (set! message (string->symbol mess)) message)]
@@ -79,17 +80,23 @@ please enter one of the symbol that you want to pass in to the model
 (define (mess-check mess)
   (member mess options-list))
 
-(define fake-news 1)
+(define fake-news 1) ;; where we are going to store are fake news
 
 (define (main)
+  ;; sets up user input to a valid state for the markov model
   (begin (users-op message)
          (or (mess-check message) (error "Bad Message!"))
-         
+         ;;sets fake-news to the markovmodel
          (set! fake-news (MarkovModel (get-url-return-news input-news) order))
+         ;; sets fake-news to the fake news i use fake-news again b/c we dont need the o
+         ;; object after we generate the fake news
          (set! fake-news ((fake-news message) length-article))
+         ;; now we write the output to a file
          (define out (open-output-file "Fake-New.txt" #:exists 'replace))
          (write fake-news out)
          (close-output-port out)))
+
 ;; FAKER NEWS
+;; main gets called
 (main)
 ;; fuction that call the website
