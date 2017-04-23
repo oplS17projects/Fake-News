@@ -12,32 +12,31 @@ See this example of what a report might look like.
 
 You should highlight three to five code excerpts.
     
-    ```racket
-    ;establish url x expression from input string
-    (define myurl (string->url input))  
-    (define myport (get-pure-port myurl))
-    (define myxexp (html->xexp myport))
+```racket
+;establish url x expression from input string
+(define myurl (string->url input))  
+(define myport (get-pure-port myurl))
+(define myxexp (html->xexp myport))
           
-    ;preprocess list of xexpressions
-    (define prelist (se-path*/list '(p) myxexp))
-    
-    
-     ; map into a list of strings
-    (define postlist (map (lambda (n) (xexpr->string n) ) prelist))
+;preprocess list of xexpressions
+(define prelist (se-path*/list '(p) myxexp))
 
-    ;remove pre news body noise
-    (define almostlist (filter-pre-news-noise postlist) )
-    ```
+; map into a list of strings
+(define postlist (map (lambda (n) (xexpr->string n) ) prelist))
+
+;remove pre news body noise
+(define almostlist (filter-pre-news-noise postlist) )
+```
     
-    ```racket
-    ;Finally build final string to return
-    (define mynews (recurse-append stringlist ) )
+```racket
+;Finally build final string to return
+(define mynews (recurse-append stringlist ) )
     
-    (define (recurse-append lst)
-      (if (null? lst)
+(define (recurse-append lst)
+    (if (null? lst)
         "\0"
         (string-append (car lst) (recurse-append (cdr lst)))))
-    ```
+```
         
     
     
