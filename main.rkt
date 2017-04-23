@@ -1,6 +1,9 @@
 #lang racket
-(require "MarkModel.rkt" "get_url_return_news.rkt") ;real deal
+(require "MarkModel.rkt" "get_url_return_news.rkt" "infowars.rkt") ;real deal
 ;(require "MarkModel.rkt") ; just for testing
+(provide mynews
+         fakenews)
+
 
 
 (define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
@@ -93,3 +96,4 @@ please enter one of the symbol that you want to pass in to the model
 ;; FAKER NEWS
 (main)
 ;; fuction that call the website
+(infowars)
