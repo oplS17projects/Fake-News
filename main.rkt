@@ -1,26 +1,27 @@
 #lang racket
-(require "MarkModel.rkt" "get_url_return_news.rkt" "infowars.rkt") ;real deal
+(require "MarkModel.rkt"
+         "get_url_return_news.rkt"
+         "infowars.rkt") ;real deal
 ;(require "MarkModel.rkt") ; just for testing
-(provide mynews
-         fakenews)
+;(provide mynews fakenews)
 
 
 ;; gets input from users
+;; gets url
 (define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
-;When UI becomes primary concern
 (printf  input-prompt)
 (newline)
 (define input-news (read-line))
 
 
-
-(define order-prompt "Order that you want to make your model with. 7 to 12 is recommended: ")
+;; gets order
+(define order-prompt "What order do you want to make your model with. 7 to 12 is recommended: ")
 (printf order-prompt)
 (newline)
 (define order (or (string->number (read-line))
                   (error "You need to enter a number.")))
 
-
+;; get the length of the article
 (define length-article-prompt "How long do you want the artcle. Must be greater then your order. ")
 (printf length-article-prompt)
 (newline)
@@ -63,7 +64,8 @@ please enter one of the symbol that you want to pass in to the model
 
 ")
 
-
+;; lets you get different info from the object by writing -o checkout string above for
+;; the details
 (define message-prompt "Input -o for option or write get-the-news to just gen fake news")
 (printf message-prompt)
 (newline)
@@ -79,7 +81,7 @@ please enter one of the symbol that you want to pass in to the model
             (newline)
             (set! message (string->symbol (read-line))) message)]
     [else (error "NOT valid input!!!")]))
-
+;; checks that the message passed in is valid one from a list of valid messages
 (define (mess-check mess)
   (member mess options-list))
 

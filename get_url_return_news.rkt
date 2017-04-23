@@ -5,7 +5,7 @@
          net/url
          html-parsing
          html)
-         
+;(provide (all-defined-out))
 (provide get-url-return-news)
 
 ;There are two ways to print to the file, the first is
@@ -25,12 +25,12 @@
 ;makrs  (this object is mynews for the html website)
 ;this proves to be a challenge
 ;(define (list-walk-print listn)
- ; (if (null? listn)
-  ;    " "
-   ;   (begin
-    ;    (fprintf out (car listn))
-     ;   (newline out)
-      ;  (list-walk-print (cdr listn)))))
+; (if (null? listn)
+;    " "
+;   (begin
+;    (fprintf out (car listn))
+;   (newline out)
+;  (list-walk-print (cdr listn)))))
 
 ;predicate abstraction
 (define (length-mean-news? teststring)
@@ -66,8 +66,8 @@
 
 (define (remove-json1 alist)
   (map (lambda (n)
-            (regexp-replace #rx"\u00AD" n "") )
-          alist))
+         (regexp-replace #rx"\u00AD" n "") )
+       alist))
 
 ;Function you want... just pass it a string
 (define (get-url-return-news input)
@@ -100,6 +100,6 @@
     (define mynews (recurse-append stringlist ) )
 
     ;return the news
-      mynews ) )
+    mynews ) )
 
 (get-url-return-news "https://www.washingtonpost.com/world/national-security/trump-calls-turkeys-erdogan-to-congratulate-him-on-contested-referendum/2017/04/17/f997d306-2397-11e7-a1b3-faff0034e2de_story.html?hpid=hp_hp-top-table-main_usturkey-8pm%3Ahomepage%2Fstory&utm_term=.204a17b06086" )
