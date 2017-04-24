@@ -2,11 +2,11 @@
 Dave &amp; Jake's Fake News Generator 
 ## Statement
 
-   We plan on implementing a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from data collected by web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others.
+   We have implemented a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from data collected by web scraping real news websites. Neither of us have done web scraping before and find it interesting. We both love a good laugh at the expense of others.
 
 ## Analysis
 
-   At current understanding of the project we imagine that we're going to be using data abstraction in creating the functions that will pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into their respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages.
+   We essentially used ata abstraction in creating the functions that pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into their respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages.
    The Markov Model will be made up of a constructor and other member functions that will be outlined here. Which take a file and order. There is some procedural abstraction to get at parts of the object since it is stored in a cons cell we abstract it using car and cdr.
    ```racket
 (define (markModel file k)
@@ -60,34 +60,24 @@ We are going to be webscraping data from typical news outlets such as:
 "http://www.usatoday.com/"
 "https://www.washingtonpost.com/"
 
-Here is what url pulling & storage might look like:
+Here is what url pulling looks like4\:
 ```racket
-(require html)
-;http://docs.racket-lang.org/html/
-(require html-parsing)
-;https://docs.racket-lang.org/html-parsing/#%28part._.Interface%29
-(require net/url)
-;https://docs.racket-lang.org/net/url.html
+(define (get-url-return-news input)
+  (begin
 
-; Some of the symbols in html and xml conflict with
-; each other and with racket/base language, so we prefix
-; to avoid namespace conflict.
-(require (prefix-in h: html)
-         (prefix-in x: xml))
+    ;Establish url x-expression from input string
+    (define myurl (string->url input))  
+    (define myport (get-pure-port myurl))
+    (define myxexp (html->xexp myport))
+          
+    ;Creates a list of html paragraph tagged x-expressions
+    (define prelist (se-path*/list '(p) myxexp))
 
-;these are the ports created from urls' of some news outlets
-(define nprurl (string->url "http://www.npr.org/"))
-(define nprport (get-pure-port nprurl))
-
-(define huffposturl (string->url "http://www.huffingtonpost.com/"))
-(define huffpostport (get-pure-port huffposturl))
-
-;here we're creating html object instances of them
-(define npr-html (read-html nprport))
-(define huffpost-html (read-html huffpostport))
+    ;Map into a list of strings
+    (define postlist (map (lambda (n) (xexpr->string n) ) prelist))
 ```
 
-We are going to be looking for title elements, heading tags, footers, headers, & paragraph tags. At current understanding, after we pull these sections, we will be putting the ones we want into a text file. We are going to isolate the bodies of articles as we are not concerned with titles or authors. After the data is collected we will run the text file through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
+Upon looking at some sample source for websites, we decided that most of the news content on news websites is in the paragraph tags. Therefore, we concentrated solely on pulling the paragraph tags from the html-parsing parse trees. At current understanding, after we pull these sections, we will be putting the ones we want into a text file. We are going to isolate the bodies of articles as we are not concerned with titles or authors. After the data is collected we will run the text file through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
 
 ## Deliverable and Demonstration
 
