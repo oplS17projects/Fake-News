@@ -161,6 +161,8 @@ I used higher order functions all over the place but in this example, I used the
                                 (list 'alpha-prob (map (λ (n) (char-prob n)) alpha-freq)))]
              )
 ```
+- ### Closure
+I used closure in the Markov model for the helper function because they do not need to exist outside that function. If you want to see this check out MarkModel.rkt file.
 
 ## Other Thoughts
 Originally my idea was to make the Markov model using a cons cell that held only the original text and the order. Which I thought would be the functional way of doing thing but when I started to implement the model this way. I quickly found out that I need some parts of the object more than once which would mean that I would have to make them repeatedly. So, I switched to a tagged list where I made a bunch of local variables using let star. Which let me use a tagged list which I think works well. It also has the benefit that I can see the whole model at ones which help with troubleshooting. (Bellow is the general idea from the read me the whole version has long since been delete)
