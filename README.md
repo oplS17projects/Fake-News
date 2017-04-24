@@ -56,7 +56,7 @@ Dave &amp; Jake's Fake News Generator
 ## External Technologies
 
 ### Unit Testing
-One of the external libs we are using is unit testing. We are using unit tests to prove that the behavior of our program is reliable and testable, which is a hallmark of functional programing. Below is an example of one of our unit tests.
+   One of the external libs we are using is unit testing. We are using unit tests to prove that the behavior of our program is reliable and testable, which is a hallmark of functional programing. Below is an example of one of our unit tests.
 ```racket
 (test-begin
  ;; attempt to make some of the test easier to understand
@@ -115,7 +115,7 @@ One of the external libs we are using is unit testing. We are using unit tests t
    ))
    ```
    
-We are going to be webscraping data from typical news outlets such as:
+   We are going to be webscraping data from typical news outlets such as:
 "http://www.npr.org/"
 "http://www.huffingtonpost.com/"
 "http://www.cnn.com/"
@@ -139,30 +139,33 @@ Here is what url pulling looks like4\:
     (define postlist (map (lambda (n) (xexpr->string n) ) prelist))
 ```
 
-Upon looking at some sample source for websites, we decided that most of the news content on news websites is in the paragraph tags. Therefore, we concentrated solely on pulling the paragraph tags from the html-parsing parse trees. At current understanding, after we pull these sections, we will be putting the ones we want into a text file. We are going to isolate the bodies of articles as we are not concerned with titles or authors. After the data is collected we will run the text file through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
+   Upon looking at some sample source for websites, we decided that most of the news content on news websites is in the paragraph tags. Therefore, we concentrated solely on pulling the paragraph tags from the html-parsing parse trees. At current understanding, after we pull these sections, we will be putting the ones we want into a text file. We are going to isolate the bodies of articles as we are not concerned with titles or authors. After the data is collected we will run the text file through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
 
 ## Deliverable and Demonstration
 
-What this project is a functional fake news generator that will generate fake news by scraping a real news article off of the internet. Then that real news is feed into a Markov Model as a string which will then generate a fake news article. 
-Additional functionality that we added was making a user interface where the user can input the url, order, and other information need to generate an article. Once that article is generated it get sent to the racket file that will make website that will display the real news next to are fake news so you can compare the results.
-In are demo you are able to give are program the url of the article that you want base you fake news off of. Also you will have the option to look at any part of the object that you want to see. Then it will show up on the website for you to check out.
+   What this project is a functional fake news generator that will generate fake news by scraping a real news article off of the internet. Then that real news is feed into a Markov Model as a string which will then generate a fake news article. 
+   Additional functionality that we added was making a user interface where the user can input the url, order, and other information need to generate an article. Once that article is generated it get sent to the racket file that will make website that will display the real news next to are fake news so you can compare the results.
+   In are demo you are able to give are program the url of the article that you want base you fake news off of. Also you will have the option to look at any part of the object that you want to see. Then it will show up on the website for you to check out.
 
 
 ## Architecture Diagram
 ![realnewsorfake](/Block2.PNG?raw=true "FAKE NEWS")
 
-1. The program reads a text file. The file should be filled with multiple news stories or with stories that you want spliced into the new generated file. It can be user created. 
-2. You will alternatively be able to give the program a website url which should link to real news stories.
+1. The program asks the user for input which is the url where the news that you want to base you fake news off of is. The order of the kgram which is the size of the strings that the article will be broken up into (there is a recommend size to help people decide). Then they are ask for how long they would like their news to be. Next they will be asked if they would like to just generate the fake news or see a part of the Markov model they are interested in.
 
-   2a. The program will then generate a text file to be read by the Markov Model.
+2. Then the url that was given to use by the user is passed off to the web parser which will return a string.
 
-3. Next we make a markov model object which is a cons cell. You can see this in more detail in the sections above. A general idea is that it takes the file, extracts strings out of it and stores in in the car of the cons cell and you also give the constructor a integer which will be the order which is the size of the k-gram.
-4. Then we take the Markov model object and generate an output.
+3. Now that string will be passed to the Markov model which will initialize all its members in its tagged list.
   
-   4a. There will be special cases for unit testing to confirm that the program is working properly.
-   
-   4b. We will also output the result of that we generated into a text file.
+   3a. The Markov model is also united tested.
 
+4. Based on the option that the user inputted the model will either generate fake news or return a member of it tagged list.
+
+5. The output of the model will be a string.
+   
+   5a. Which will be captured by an output file.
+   
+   5b. It is also passed to are website creation racket file which will generate a website with the original news next to the fake news.
 
 ## Schedule
 
@@ -174,8 +177,7 @@ In are demo you are able to give are program the url of the article that you wan
 
 ### Public Presentation (Fri Apr 28)
 - [ ]
-For the public presentation, we will have a working fake news generator with some already generated news for people to look at.
-Our Block diagram and unit tests will demonstrate how our program works.
+For the public presentation, we will have a working fake news generator with some already generated news for people to look at. Our Block diagram and unit tests will demonstrate how our program works. Also if a user what to find some news on the web they can make some fake news with it.
 
 ## Stretch Goals
 
