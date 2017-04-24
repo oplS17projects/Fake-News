@@ -93,12 +93,11 @@ please enter one of the symbol that you want to pass in to the model
          (or (mess-check message) (error "Bad Message!"))
          ;;sets fake-news to the markovmodel
          (set! fake-news (MarkovModel (get-url-return-news input-news) order))
-         ;; sets fake-news to the fake news i use fake-news again b/c we dont need the o
-         ;; object after we generate the fake news
-         (set! fake-news ((fake-news message) length-article))
          ;; now we write the output to a file
          (define out (open-output-file "Fake-New.txt" #:exists 'replace))
-         (write fake-news out)
+         ;; ((fake-news message) returns a string and then is write out to
+         ;; the file called Fake-New.txt
+         (write ((fake-news message) length-article) out)
          (close-output-port out)))
 
 ;; FAKER NEWS
