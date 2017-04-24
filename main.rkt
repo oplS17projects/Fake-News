@@ -85,19 +85,22 @@ please enter one of the symbol that you want to pass in to the model
 (define (mess-check mess)
   (member mess options-list))
 
+;; these are used to pass info to the serverlet part of the project
 (define fake-news 1) ;; where we are going to store are fake news
+(define mm 1)
 
 (define (main)
   ;; sets up user input to a valid state for the markov model
   (begin (users-op message)
          (or (mess-check message) (error "Bad Message!"))
          ;;sets fake-news to the markovmodel
-         (set! fake-news (MarkovModel (get-url-return-news input-news) order))
-         ;; now we write the output to a file
-         (define out (open-output-file "Fake-New.txt" #:exists 'replace))
+         (set! mm (MarkovModel (get-url-return-news input-news) order))
          ;; ((fake-news message) returns a string and then is write out to
          ;; the file called Fake-New.txt
-         (write ((fake-news message) length-article) out)
+         (set! fake-news ((fake-news message) length-article))
+         ;; now we write the output to a file
+         (define out (open-output-file "Fake-New.txt" #:exists 'replace))
+         (write fake-news out)
          (close-output-port out)))
 
 ;; FAKER NEWS
