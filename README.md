@@ -149,7 +149,7 @@ In are demo you are able to give are program the url of the article that you wan
 
 
 ## Architecture Diagram
-![realnewsorfake](/realnewsorfake.png?raw=true "FAKE NEWS")
+![realnewsorfake](/Block2.PNG?raw=true "FAKE NEWS")
 
 1. The program reads a text file. The file should be filled with multiple news stories or with stories that you want spliced into the new generated file. It can be user created. 
 2. You will alternatively be able to give the program a website url which should link to real news stories.
