@@ -85,7 +85,7 @@
         (begin
           (let* ([new-char (make-string 1 (rando new-kgram kgrams prob-helper))]
                  [new-news (string-append (substring new-kgram 1)  new-char)])
-            ;;(display (string-append  fake-news "+" new-char " ")) ;;  uncomment for testing
+            ;; (display (string-append  fake-news "+" new-char " ")) ;;  uncomment for testing
             (gen (string-append fake-news  new-char)
                  new-news
                  kgrams
