@@ -7,6 +7,7 @@ Dave &amp; Jake's Fake News Generator
 ## Analysis
 
    We essentially used data abstraction in creating the functions that pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into their respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages.
+   
    Originally I thought I would just store the input string and the order in a cons cell. But then I realized that there were parts of the Markov Model that need other members to be calculated first to get their own value. But I porotype the cons cell version as you can see below. But I later came to the realization that I could use a tagged list so I started over a rewrote the whole thing which gave me the results that I was looking for.
    ```racket
 (define (markModel file k)
