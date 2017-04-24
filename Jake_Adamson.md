@@ -55,30 +55,30 @@ I used unit testing to validate object members to make sure that they were what 
    ;; once so (c kgram-a) return 1
    (let ([kgram-a (first(mm 'alpha-freq))])
      (check =  (a kgram-a)  0) ; "aa"
-     (check =  (c kgram-a) 1) ; "ac"
+     (check =  (c kgram-a)  1) ; "ac"
      (check =  (o kgram-a)  0) ; "ao"
-     (check =  (t kgram-a) 0) ; "at"
+     (check =  (t kgram-a)  0) ; "at"
      )
 ;; in this case it is 'c' + some char
    (let ([kgram-c (second (mm 'alpha-freq))])
-     (check =  (a kgram-c)  0)  ; "ca"
-     (check =  (c kgram-c) 1) ; "cc"
-     (check =  (o kgram-c)  2)  ; "co"
-     (check =  (t kgram-c) 1) ; "ct"
+     (check =  (a kgram-c)  0) ; "ca"
+     (check =  (c kgram-c)  1) ; "cc"
+     (check =  (o kgram-c)  2) ; "co"
+     (check =  (t kgram-c)  1) ; "ct"
      )
 ;; in this case it is 'o' + some char
    (let ([kgram-o (third (mm 'alpha-freq))])
      (check =  (a kgram-o)  0) ; "oa"
-     (check =  (c kgram-o) 2) ; "oc"
+     (check =  (c kgram-o)  2) ; "oc"
      (check =  (o kgram-o)  2) ; "og"
-     (check =  (t kgram-o) 0) ; "ot"
+     (check =  (t kgram-o)  0) ; "ot"
      )
 ;; in this case it is 't' + some char
    (let ([kgram-t (fourth (mm 'alpha-freq))])
      (check =  (a kgram-t)  1) ; "oa"
-     (check =  (c kgram-t) 0) ; "oc"
+     (check =  (c kgram-t)  0) ; "oc"
      (check =  (o kgram-t)  0) ; "og"
-     (check =  (t kgram-t) 1) ; "ot"
+     (check =  (t kgram-t)  1) ; "ot"
      )
    ))
 
