@@ -158,15 +158,15 @@ Here is what url pulling looks like4\:
 
 3. Now that string will be passed to the Markov model which will initialize all its members in its tagged list.
   
-   3a. The Markov model is also united tested.
+   + The Markov model is also united tested.
 
 4. Based on the option that the user inputted the model will either generate fake news or return a member of it tagged list.
 
 5. The output of the model will be a string.
    
-   5a. Which will be captured by an output file.
+   + Which will be captured by an output file.
    
-   5b. It is also passed to are website creation racket file which will generate a website with the original news next to the fake news.
+   + It is also passed to are website creation racket file which will generate a website with the original news next to the fake news.
 
 ## Schedule
 
