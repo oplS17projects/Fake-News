@@ -97,9 +97,7 @@
     ;(define stringlist (map (lambda (n) (string-trim n) ) penultlist) )
 
     ;Finally build final string to return
-    (define mynews (recurse-append stringlist ) )
+    (define mynews (recurse-append stringlist ) ) 
 
     ;return the news
     mynews ) )
-
-(get-url-return-news "https://www.washingtonpost.com/world/national-security/trump-calls-turkeys-erdogan-to-congratulate-him-on-contested-referendum/2017/04/17/f997d306-2397-11e7-a1b3-faff0034e2de_story.html?hpid=hp_hp-top-table-main_usturkey-8pm%3Ahomepage%2Fstory&utm_term=.204a17b06086" )

@@ -1,7 +1,7 @@
 #lang racket
 (require web-server/servlet
-         web-server/servlet-env
-         "get-url-return-news.rkt")
+         web-server/servlet-env)
+         ;"get-url-return-news.rkt")
 ;(provide (all-defined-out))
 (provide infowars)
 
@@ -36,12 +36,13 @@
                      (div ((class "col-md-6 col-centered"))
                           (div ((class "text-centered"))
                                (h3 "Fake News"))
-                          ,fakenews  )))   ))) )
+                          ,fake-news  )))   ))) )
 
 (define root (current-directory))
+(define mynews (mm 'text))
 
-(define z (MarkovModel mynews 12) )
-(define fakenews ((z 'get-the-news) 2000))
+;(define z (MarkovModel mynews 12) )
+;(define fakenews ((z 'get-the-news) 2000))
 
 (define infowars (serve/servlet mypage
                        #:extra-files-paths

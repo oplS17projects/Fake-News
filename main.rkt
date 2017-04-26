@@ -1,8 +1,8 @@
 #lang racket
 (require "MarkModel.rkt"
          "get_url_return_news.rkt"
-         "infowars.rkt") ;real deal
-;(require "MarkModel.rkt") ; just for testing
+         web-server/servlet
+         web-server/servlet-env)
 (provide mm fake-news)
 
 
@@ -97,7 +97,7 @@ please enter one of the symbol that you want to pass in to the model
          (set! mm (MarkovModel (get-url-return-news input-news) order))
          ;; ((fake-news message) returns a string and then is write out to
          ;; the file called Fake-New.txt
-         (set! fake-news ((fake-news message) length-article))
+         (set! fake-news ((mm 'get-the-news) length-article))
          ;; now we write the output to a file
          (define out (open-output-file "Fake-New.txt" #:exists 'replace))
          (write fake-news out)
@@ -106,5 +106,45 @@ please enter one of the symbol that you want to pass in to the model
 ;; FAKER NEWS
 ;; main gets called
 (main)
-;; fuction that call the website
-(infowars)
+
+(define (mypage req)
+  (response/xexpr
+   `(html (head (title "UML INFOWARS II : Faker News!")
+                (link ((rel "stylesheet")
+                       (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+                       (type "text/css")))
+                (link ((rel "stylesheet")
+                       (href "/webscrape.css")
+                       (type "text/css")))
+                (script ((src "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")))
+                (script ((src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"))))
+          (body
+           (header 
+                   (div ((class "container"))
+                        (div ((class "row"))
+                             (div ((class "col-lg-12"))
+                                       (h1 ((class "sitename"))
+                                           "UML INFO WARS")
+                                       (h3 ((class "quote"))
+                                              " Democracy is but Mob Rule ") ) ) ) )
+                     
+           (hr ((class "line")))
+           (div ((class "container"))
+                (div ((class "row"))
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Real News"))
+                          ,mynews )
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Fake News"))
+                          ,fake-news  )))   ))) )
+
+(define root (current-directory))
+
+(define mynews (mm 'text))
+
+(define infowars (serve/servlet mypage
+                       #:extra-files-paths
+                       (list
+                        (build-path root "css"))) )

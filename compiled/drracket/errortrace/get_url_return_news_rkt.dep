@@ -1,0 +1,1 @@
+("6.7" ("ee45e45463d5dcf081a7236d16829f64d1d4697d" . "819886d59da30104ca8e8194deba17e03a85f2fc") (collects #"errortrace" #"errortrace-key.rkt") (collects #"html" #"main.rkt") (collects #"html-parsing" #"main.rkt") (collects #"net" #"url.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"xml" #"main.rkt") (collects #"xml" #"path.rkt"))
