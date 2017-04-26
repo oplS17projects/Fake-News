@@ -3,7 +3,6 @@
          "get_url_return_news.rkt"
          web-server/servlet
          web-server/servlet-env)
-(provide mm fake-news)
 
 
 ;; gets input from users
