@@ -75,6 +75,41 @@ When exploring different options for getting information from websites we played
 (define prelist (se-path*/list '(p) myxexp))
 ```
 
+...and this is what hosting with Boostrap grids looks like
+```racket
+(define (mypage req)
+  (response/xexpr
+   `(html (head (title "UML INFOWARS II : Faker News!")
+                (link ((rel "stylesheet")
+                       (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+                       (type "text/css")))
+                (link ((rel "stylesheet")
+                       (href "/webscrape.css")
+                       (type "text/css")))
+                (script ((src "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")))
+                (script ((src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"))))
+          (body
+           (header 
+                   (div ((class "container"))
+                        (div ((class "row"))
+                             (div ((class "col-lg-12"))
+                                       (h1 ((class "sitename"))
+                                           "UML INFO WARS")
+                                       (h3 ((class "quote"))
+                                              " Democracy is but Mob Rule ") ) ) ) )
+           (hr ((class "line")))
+           (div ((class "container"))
+                (div ((class "row"))
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Real News"))
+                          ,mynews )
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Fake News"))
+                          ,fake-news  )))   ))) )
+```
+
 ## External Technologies
 
 ### Unit Testing
