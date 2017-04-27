@@ -137,10 +137,10 @@ When exploring different options for getting information from websites we played
    (check-not-equal? (mm 'text) "oploploploploplopl")
    
 ;; checks the kgrams and since the order is 1 they are only one char long
-   (check = (first (mm 'frq-kgram))  1) ; 'a'
-   (check = (second (mm 'frq-kgram)) 4) ; 'c'
-   (check = (third (mm 'frq-kgram))  4) ; 'o'
-   (check = (fourth (mm 'frq-kgram)) 2) ; 't'
+   (check = (a (mm 'frq-kgram))  1) ; 'a'
+   (check = (c (mm 'frq-kgram)) 4) ; 'c'
+   (check = (o (mm 'frq-kgram))  4) ; 'o'
+   (check = (t (mm 'frq-kgram)) 2) ; 't'
 ;; checks how many times a kgram is followed by a specific char
    ;; in this case it is 'a' + some char
    ;; in this case 'a' is only ever followed by a 'c'
