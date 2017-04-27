@@ -238,7 +238,10 @@ Jacob Adamson (@jake-the-human)
 - :cd: Markov Model Object
       - Which means I will take the input and transform it in to the data needed for the object.
 - :cd: Unit Tests
-      - Validating both the Markov Model Object and any parsing function.
+      - Validating the Markov Model Object.
+- :cd: User Interface
+      - Getting input from the user to generating an output and sending that output to the appropriate places.
+      
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
 [markdown]: https://help.github.com/articles/markdown-basics/
