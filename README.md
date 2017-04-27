@@ -1,8 +1,11 @@
 # Fake-News :newspaper: :radio: :tv: :computer: 
 Dave &amp; Jake's Fake News Generator 
+
 ## Statement
 
    We have implemented a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from data collected by web scraping real news websites. Neither of us have done web scraping before and find it interesting.
+Also, if you are interested in seeing some examples click link bellow.
+- [Examples of fake news](https://github.com/oplS17projects/Fake-News/blob/master/Examples-of-fake-news.txt)
 
 ## Analysis
 
@@ -182,7 +185,7 @@ When exploring different options for getting information from websites we played
 ## Demonstration
    To run the Fake News application, you have a few options. 
    To use a URL, simply launch the executable and the command line or DrRacket interface will prompt you for some input. First, you'll need to enter a news URL. Then you'll be asked to enter the markov Model Input.
-   You may also elect to examine these text files we've supplied with examples of generated news:
+   You may also elect to examine these text files we've supplied with examples of generated news: [Examples of fake news](https://github.com/oplS17projects/Fake-News/blob/master/Examples-of-fake-news.txt)
 
 
 ## Architecture Diagram
