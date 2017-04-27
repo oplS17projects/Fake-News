@@ -6,9 +6,9 @@ Dave &amp; Jake's Fake News Generator
 
 ## Analysis
 
-   We essentially used data abstraction in creating the functions that pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We'll be creating an expression evaluator to evaluate html elements into their respective object containers. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages.
+   We essentially used data abstraction in creating the functions that pull specific parts from HTML bodies, as well as in defining the types of objects pulled. We'll probably utilize some filters to parse HTML tags & JSON. We're going to recurse through our data structures to find data as well as attempt to create closures and objects to encapsulate different "Fake News" pages.
    
-   Originally I thought I would just store the input string and the order in a cons cell. But then I realized that there were parts of the Markov Model that need other members to be calculated first to get their own value. But I porotype the cons cell version as you can see below. But I later came to the realization that I could use a tagged list so I started over a rewrote the whole thing which gave me the results that I was looking for.
+   Originally I thought I would just store the input string and the order in a cons cell. But then I realized that there were parts of the Markov Model that need other members to be calculated first to get their own value. But I porotyped the cons cell version as you can see below. But I later came to the realization that I could use a tagged list so I started over and rewrote the whole thing which gave me the results that I was looking for.
    ```racket
 (define (markModel file k)
     (if (file-exists? file)
@@ -53,7 +53,24 @@ Dave &amp; Jake's Fake News Generator
   (alpha-freq ((1 1 0) (1 0 1) (0 1 0) (0 0 1) (1 0 1) (1 1 0) (0 0 1) (1 0 2)))
   (alpha-prob ((1/2 1/2 0) (1/2 0 1/2) (0 1 0) (0 0 1) (1/2 0 1/2) (1/2 1/2 0) (0 0 1) (1/3 0 2/3))))
   ```
-    
+
+Here is what url pulling looks like:
+```racket
+(define (get-url-return-news input)
+  (begin
+
+    ;Establish url x-expression from input string
+    (define myurl (string->url input))  
+    (define myport (get-pure-port myurl))
+    (define myxexp (html->xexp myport))
+          
+    ;Creates a list of html paragraph tagged x-expressions
+    (define prelist (se-path*/list '(p) myxexp))
+
+    ;Map into a list of strings
+    (define postlist (map (lambda (n) (xexpr->string n) ) prelist))
+```
+
 ## External Technologies
 
 ### Unit Testing
@@ -115,30 +132,6 @@ Dave &amp; Jake's Fake News Generator
    ))
    ))
    ```
-   
-   We are going to be webscraping data from typical news outlets such as:
-"http://www.npr.org/"
-"http://www.huffingtonpost.com/"
-"http://www.cnn.com/"
-"http://www.usatoday.com/"
-"https://www.washingtonpost.com/"
-
-Here is what url pulling looks like4\:
-```racket
-(define (get-url-return-news input)
-  (begin
-
-    ;Establish url x-expression from input string
-    (define myurl (string->url input))  
-    (define myport (get-pure-port myurl))
-    (define myxexp (html->xexp myport))
-          
-    ;Creates a list of html paragraph tagged x-expressions
-    (define prelist (se-path*/list '(p) myxexp))
-
-    ;Map into a list of strings
-    (define postlist (map (lambda (n) (xexpr->string n) ) prelist))
-```
 
    Upon looking at some sample source for websites, we decided that most of the news content on news websites is in the paragraph tags. Therefore, we concentrated solely on pulling the paragraph tags from the html-parsing parse trees. At current understanding, after we pull these sections, we will be putting the ones we want into a text file. We are going to isolate the bodies of articles as we are not concerned with titles or authors. After the data is collected we will run the text file through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
 
@@ -190,12 +183,14 @@ For the public presentation, we will have a working fake news generator with som
 David DaCosta (@anti-dave)
 
 - :calling: Web-scraping/Parsing Web Data
-- :calling: Unit testing any web-scraping functions
+      - I've created an application (get-url-return-news) that pulls and filters paragraph xml using functional techniques
+- :calling: Web Hosting
+      - I've created a small servlet that hosts the information pulled in comparison with information created using html & Bootstrap
 
 Jacob Adamson (@jake-the-human)
 
 - :cd: Markov Model Object
-      - Which means I will take the input and transform it in to the data need for the object.
+      - Which means I will take the input and transform it in to the data needed for the object.
 - :cd: Unit Tests
       - Validating both the Markov Model Object and any parsing function.
 <!-- Links -->
