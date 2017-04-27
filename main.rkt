@@ -3,7 +3,7 @@
          "get_url_return_news.rkt"
          "infowars.rkt") ;real deal
 ;(require "MarkModel.rkt") ; just for testing
-;(provide mynews fakenews)
+(provide mm fake-news)
 
 
 ;; gets input from users
