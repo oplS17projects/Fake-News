@@ -28,7 +28,7 @@ Dave &amp; Jake's Fake News Generator
 (freqOfChar mM c)
 (gen kStr lenKStr)
    ```
-   Here is where I create the tagged list.
+   Here is where the tagged list is created.
    ```racket
    [MarkovModel (list 'Mm
                                 (list 'kgrams (remove-duplicates raw-kgram))
@@ -39,7 +39,7 @@ Dave &amp; Jake's Fake News Generator
                                 (list 'alpha-freq alpha-freq)
                                 (list 'alpha-prob (map (λ (n) (char-prob n)) alpha-freq)))]
    ```
-   This allowed me to use message passing in order to get at different parts of the object. this also made testing a lot easier because I could see all the objects members at once. This was really only helpful with small inputs with small order values. 
+   This allowed us to use message passing in order to get at different parts of the object. This also made testing a lot easier because we could see all the objects members at once. This was really only helpful with small inputs with small order values. 
   ```racket
   > (define t (MarkovModel "opppplllolpopl" 2))
 ;; Shows the internals of the object
@@ -53,7 +53,6 @@ Dave &amp; Jake's Fake News Generator
   (alpha-freq ((1 1 0) (1 0 1) (0 1 0) (0 0 1) (1 0 1) (1 1 0) (0 0 1) (1 0 2)))
   (alpha-prob ((1/2 1/2 0) (1/2 0 1/2) (0 1 0) (0 0 1) (1/2 0 1/2) (1/2 1/2 0) (0 0 1) (1/3 0 2/3))))
   ```
-
 Here is what url pulling looks like:
 ```racket
 (define (get-url-return-news input)
@@ -69,6 +68,11 @@ Here is what url pulling looks like:
 
     ;Map into a list of strings
     (define postlist (map (lambda (n) (xexpr->string n) ) prelist))
+```
+When exploring different options for getting information from websites we played different libraries and options. We went with xml and html-parsing as it creates a parse tree with branches easily accesible through se-path*/lists as can be seen in the code:
+```racket
+;Creates a list of html paragraph tagged x-expressions
+(define prelist (se-path*/list '(p) myxexp))
 ```
 
 ## External Technologies
