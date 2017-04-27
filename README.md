@@ -74,7 +74,8 @@ When exploring different options for getting information from websites we played
 ;Creates a list of html paragraph tagged x-expressions
 (define prelist (se-path*/list '(p) myxexp))
 ```
-
+   Upon looking at some sample source for websites, we decided that most of the news content on news websites is in the paragraph tags. Therefore, we concentrated solely on pulling the paragraph tags from the html-parsing parse trees. We like to think that the results end up at least semi coherent yet humorous results, like when quotes are repeated and such.
+   
 ...and this is what hosting with Boostrap grids looks like
 ```racket
 (define (mypage req)
@@ -172,13 +173,16 @@ When exploring different options for getting information from websites we played
    ))
    ```
 
-   Upon looking at some sample source for websites, we decided that most of the news content on news websites is in the paragraph tags. Therefore, we concentrated solely on pulling the paragraph tags from the html-parsing parse trees. At current understanding, after we pull these sections, we will be putting the ones we want into a text file. We are going to isolate the bodies of articles as we are not concerned with titles or authors. After the data is collected we will run the text file through our markov model program to generate a "false" implementation based on the probabilities of words in succession. We're shooting for at least semi coherent yet humorous results.
-
-## Deliverable and Demonstration
+## Deliverable
 
    What this project is a functional fake news generator that will generate fake news by scraping a real news article off of the internet. Then that real news is feed into a Markov Model as a string which will then generate a fake news article. 
    Additional functionality that we added was making a user interface where the user can input the url, order, and other information need to generate an article. Once that article is generated it get sent to the racket file that will make website that will display the real news next to are fake news so you can compare the results.
    In are demo you are able to give are program the url of the article that you want base you fake news off of. Also you will have the option to look at any part of the object that you want to see. Then it will show up on the website for you to check out.
+   
+## Demonstration
+   To run the Fake News application, you have a few options. 
+   To use a URL, simply launch the executable and the command line or DrRacket interface will prompt you for some input. First, you'll need to enter a news URL. Then you'll be asked to enter the markov Model Input.
+   You may also elect to examine these text files we've supplied with examples of generated news:
 
 
 ## Architecture Diagram
