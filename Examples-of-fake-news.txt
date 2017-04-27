@@ -106,8 +106,10 @@ pushing the White House to release more information about what top administratio
 campaign, transition and in the early days of Trump’s presidency.
 
 -Output 1: Length: 2000, Order: 12
-The Pentagon’s top watchdog has launched an investigation into Flynn began April 4. The watchdog’s office did not discuss the investigation publicly until after the House Oversight Committee, to make good on vows to investigate the Flynn matter.
-Democrats on the panel reminded Chaffetz that for years he has warned witnesses that complying with committee requests “is not an optional exercise.” “Your decisions on this investigation is underway. The latest revelations that he misled Vice President Pence
+The Pentagon’s top watchdog has launched an investigation into Flynn began April 4. The watchdog’s office did not discuss the 
+investigation publicly until after the House Oversight Committee, to make good on vows to investigate the Flynn matter.
+Democrats on the panel reminded Chaffetz that for years he has warned witnesses that complying with committee requests “is not an 
+optional exercise.” “Your decisions on this investigation is underway. The latest revelations that he misled Vice President Pence
 about the nature of his communications with the Russian ambassador to the United States. The pugnacious retired officer,
 who last year led “lock her up” chants about Democratic presidential candidate Hillary Clinton, filed paperwork as a foreign agent
 for Turkish interests for a Netherlands-based company, Inovo BV, which paid his company $530,000 in the fall. Defense Department
@@ -117,7 +119,8 @@ Any debt collection due to an emoluments clause violation is capped at no more t
 military service, they may be subject to the Constitution to exercise robust oversight of the Executive Branch, regardless of who
 occupies the White House deflected any criticism that they failed to properly vet Flynn to be Trump’s top security adviser.
 Press Secretary Sean Spicer said. But beyond checking Flynn’s security clearance, Spicer indicated the Trump administration didn’t
-do much other vetting — something that is typical. When asked by reporters if the presidential candidate Hillary Clinton, filed paperwork as a foreign agent representing Turkish interests for a Netherlands-based company, Inovo BV, which paid his company, 
+do much other vetting — something that is typical. When asked by reporters if the presidential candidate Hillary Clinton, filed 
+paperwork as a foreign agent representing Turkish interests for a Netherlands-based company, Inovo BV, which paid his company, 
 Flynn Intel Group, carried out on behalf of Inovo BV. It is owned by Turkish businessman Ekim Alptekin, who is not a part of the 
 Turkish government but has links to it. Flynn’s company received this morning was quite troubling. Actually, it left us with more
 questions, I would say, than answers,” said Rep. Val Butler Demings (D-Fla.). Rep. Carolyn Maloney (D-N.Y.) said they just came a
@@ -432,7 +435,8 @@ Council, could not say how much of a tax cut a middle-income American would get.
 beginning. If Republicans are not able to make the cuts revenue-neutral — that is, causing no increase in the deficit — they will need
 the support of Democrats to get 60 votes in the Senate and make the legislation permanent under budget reconciliation rules. Otherwise,
 any changes to the tax code will expire in 10 years. While Republicans in the House, Senate and Trump administration have said they do
-not want to add to the deficit, there is a growing acknowledgment of the possibility that they will need to settle for temporary tax cuts. Treasury Secretary Steven Mnuchin said Wednesday that short-term cuts were better than nothing. And Senator Orrin G. Hatch of
+not want to add to the deficit, there is a growing acknowledgment of the possibility that they will need to settle for temporary tax 
+cuts. Treasury Secretary Steven Mnuchin said Wednesday that short-term cuts were better than nothing. And Senator Orrin G. Hatch of
 Utah, the influential Republican chairman of the Senate Finance Committee, said this week that he could live with cuts that added to
 the deficit if it meant getting the economy moving faster. Republican budget hawks will need to decide whether they want to stick to
 the arguments of fiscal responsibility that they used to bludgeon Democrats during the Obama era. One of those hawks,
