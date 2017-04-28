@@ -183,15 +183,21 @@ When exploring different options for getting information from websites we played
    In are demo you are able to give are program the url of the article that you want base you fake news off of. Also, you will have the option to look at any part of the object that you want to see. Then it will show up on the website for you to check out.
    
 ## Demonstration
-   To run the Fake News application, you have a few options. 
-   To use a URL, simply launch the executable and the command line or DrRacket interface will prompt you for a URL ipnut. 
-   Then you'll be asked to enter the markov Model settings. 
-   First you must specify the order. 
-   Then you must specify how many characters to generate. 
-   Then you can either select to input Markov Model settings with the -o option
-   Otherwise you can input "get-the-news" and the final comparison servlet will be generated.
+To run the Fake News application, you have a few options. 
+To use a URL:
+1. simply launch the executable and the command line or DrRacket interface will prompt you for a URL input. 
+2. Then you'll be asked to enter the markov Model settings: 
+   + First you must specify the order. 
+   + Then you must specify how many characters to generate. 
+   + Then you can either select to input Markov Model settings with the -o option
+   + Otherwise you can input "get-the-news" and the final comparison servlet will be generated.
    
-   Instead of running the full application you may also elect to give the MarkovModel program a text file or string directly. 
+Instead of running the full application you may also elect to give the MarkovModel program a string directly: 
+Then the same settings for the running the Markov Model apply.
+   + First you must specify the order. 
+   + Then you must specify how many characters to generate. 
+   + Then you can either select to input Markov Model settings with the -o option
+   + Otherwise you can input "get-the-news" and the final comparison servlet will be generated.
    
    You may also elect to examine these text files we've supplied with examples of generated news: [Examples of fake news](https://github.com/oplS17projects/Fake-News/blob/master/Examples-of-fake-news.txt)
 
@@ -237,9 +243,9 @@ For the public presentation, we will have a working fake news generator with som
 David DaCosta (@anti-dave)
 
 - :calling: Web-scraping/Parsing Web Data
-      - I've created an application (get-url-return-news) that pulls and filters paragraph xml using functional techniques
+      - I've created (get-url-return-news) that pulls and filters paragraph xml using functional techniques
 - :calling: Web Hosting
-      - I've created a small servlet that hosts the information pulled in comparison with information created using html & Bootstrap
+      - I've small servlet that hosts the information pulled in comparison with information created using html & Bootstrap
 
 Jacob Adamson (@jake-the-human)
 
