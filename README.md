@@ -3,7 +3,7 @@ Dave &amp; Jake's Fake News Generator
 
 ## Statement
 
-   We have implemented a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be funny to create an application which dynamically creates believable Fake News using information from data collected by web scraping real news websites. Neither of us have done web scraping before and find it interesting.
+   We have implemented a Fake News Generator. Given the current political climate of hysteria regarding "Fake News", we figured it would be fun to create an application which dynamically creates believable Fake News using information from data collected by web scraping real news websites. Neither of us have done web scraping before and find it interesting.
 Also, if you are interested in seeing some examples click link bellow.
 - [Examples of fake news](https://github.com/oplS17projects/Fake-News/blob/master/Examples-of-fake-news.txt)
 
