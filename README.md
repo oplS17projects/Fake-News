@@ -180,11 +180,19 @@ When exploring different options for getting information from websites we played
 
    What this project is a functional fake news generator that will generate fake news by scraping a real news article off of the internet. Then that real news is feed into a Markov Model as a string which will then generate a fake news article. 
    Additional functionality that we added was making a user interface where the user can input the url, order, and other information need to generate an article. Once that article is generated it get sent to the racket file that will make website that will display the real news next to are fake news so you can compare the results.
-   In are demo you are able to give are program the url of the article that you want base you fake news off of. Also you will have the option to look at any part of the object that you want to see. Then it will show up on the website for you to check out.
+   In are demo you are able to give are program the url of the article that you want base you fake news off of. Also, you will have the option to look at any part of the object that you want to see. Then it will show up on the website for you to check out.
    
 ## Demonstration
    To run the Fake News application, you have a few options. 
-   To use a URL, simply launch the executable and the command line or DrRacket interface will prompt you for some input. First, you'll need to enter a news URL. Then you'll be asked to enter the markov Model Input.
+   To use a URL, simply launch the executable and the command line or DrRacket interface will prompt you for a URL ipnut. 
+   Then you'll be asked to enter the markov Model settings. 
+   First you must specify the order. 
+   Then you must specify how many characters to generate. 
+   Then you can either select to input Markov Model settings with the -o option
+   Otherwise you can input "get-the-news" and the final comparison servlet will be generated.
+   
+   Instead of running the full application you may also elect to give the MarkovModel program a text file or string directly. 
+   
    You may also elect to examine these text files we've supplied with examples of generated news: [Examples of fake news](https://github.com/oplS17projects/Fake-News/blob/master/Examples-of-fake-news.txt)
 
 
