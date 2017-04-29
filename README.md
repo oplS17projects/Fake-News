@@ -250,7 +250,7 @@ David DaCosta (@anti-dave)
 Jacob Adamson (@jake-the-human)
 
 - :cd: Markov Model Object
-      - Which means I will take the input and transform it in to the data needed for the object.
+      - Taking the input and transform it in to the data needed for the object.
 - :cd: Unit Tests
       - Validating the Markov Model Object.
 - :cd: User Interface
