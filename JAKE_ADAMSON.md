@@ -270,6 +270,6 @@ Some cool code that Dave wrote. The list in list action here is pretty crazy. No
                           ,fakenews  )))   ))) )
 ```
 #### Code that I wrote:
-- [MarkModel.rkt)](https://github.com/oplS17projects/Fake-News/blob/master/MarkModel.rkt)
+- [MarkModel.rkt](https://github.com/oplS17projects/Fake-News/blob/master/MarkModel.rkt)
 - [UnitTest.rkt](https://github.com/oplS17projects/Fake-News/blob/master/UnitTest.rkt) 
 - [main.rkt](https://github.com/oplS17projects/Fake-News/blob/master/main.rkt) (Didn't write the website stuff.)
