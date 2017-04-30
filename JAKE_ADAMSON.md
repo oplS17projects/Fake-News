@@ -4,7 +4,7 @@ By Jake Adamson
 
 
 ## Overview
-- ### [Markov Model](.../blob/master/MarkModel.rkt)
+- ### [Markov Model](https://github.com/oplS17projects/Fake-News/blob/master/MarkModel.rkt)
 We decided to generate fake news by taking input as a news article that we got from the internet. The first step in the process was to parse a web page. A key part and one of the hardest parts of the parsing was making sure that the news article was a string with no weird html junk on it. Then once we got a clean string we give the news to the Markov model which takes the news as a string and an order which is the length of the kgrams. The kgrams are substrings of the article which have the same length as the order. You can see a list of the kgrams in the model by passing the object the symbol 'kgram. When the model is created, it breaks the article into kgrams and alphabet. And using those two things it generates text. It generates text by taking kgram and randomly choosing a letter to follow it based on the probity that the character would follow that kgram. (See image bellow to see it create the model piece by piece). And as you can see I used a tagged list when i made the object to make it easier to get to data that was need for other parts.
 
 ```racket
@@ -26,7 +26,7 @@ op+p opp+l oppl+o opplo+l opplol+p opplolp+o "opplolpo"
 ;; procedure 
 ```
 
-- ### [Unit Testing](.../blob/master/UnitTest.rkt) 
+- ### [Unit Testing](https://github.com/oplS17projects/Fake-News/blob/master/UnitTest.rkt) 
 I used unit testing to validate object members to make sure that they were what I expected. Here is an example of one of my tests.
 ```racket
 (test-begin
@@ -85,7 +85,7 @@ I used unit testing to validate object members to make sure that they were what 
    ))
 
 ```
-- ### [User Input](.../blob/master/main.rkt)
+- ### [User Input](https://github.com/oplS17projects/Fake-News/blob/master/main.rkt)
 I just ask the user for the information we need to create fake new like the url of the new story they would like to base there news off of. Also ask them for thing like the order with suggestrion and explination of what we were ask for. Also ask for things like length of the article. One thing special you could do was when prompted you could input -o for more information on the object you where creating.
 ```racket
 (define (main)
@@ -164,7 +164,7 @@ I used higher order functions all over the place but in this example, I used the
              )
 ```
 ### 4. Closure
-I used closure in the Markov model for the helper function because they do not need to exist outside that function. If you want to see this check out [MarkModel.rkt](.../blob/master/MarkModel.rkt) file. I tried to paste an example here but the whole thing would have taken up too much room since it is my entire Markov Model procedure. But the file is linked at the end. 
+I used closure in the Markov model for the helper function because they do not need to exist outside that function. If you want to see this check out [MarkModel.rkt](https://github.com/oplS17projects/Fake-News/blob/master/MarkModel.rkt) file. I tried to paste an example here but the whole thing would have taken up too much room since it is my entire Markov Model procedure. But the file is linked at the end. 
 ```racket
 define (MarkovModel text order)
   ;;helper functions
@@ -270,6 +270,6 @@ Some cool code that Dave wrote. The list in list action here is pretty crazy. No
                           ,fakenews  )))   ))) )
 ```
 #### Code that I wrote:
-- [MarkModel.rkt)](.../blob/master/MarkModel.rkt)
-- [UnitTest.rkt](.../blob/master/UnitTest.rkt) 
-- [main.rkt](.../blob/master/main.rkt) (Didn't write the website stuff.)
+- [MarkModel.rkt)](https://github.com/oplS17projects/Fake-News/blob/master/MarkModel.rkt)
+- [UnitTest.rkt](https://github.com/oplS17projects/Fake-News/blob/master/UnitTest.rkt) 
+- [main.rkt](https://github.com/oplS17projects/Fake-News/blob/master/main.rkt) (Didn't write the website stuff.)
