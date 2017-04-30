@@ -94,7 +94,7 @@ I just ask the user for the information we need to create fake new like the url 
 (newline)
 (define input-news (read-line))
 
-;; ... ask user for other information need to create the model
+;; ... ask user for other information needed to create the model
 
 (define (main)
   ;; sets up user input to a valid state for the markov model
