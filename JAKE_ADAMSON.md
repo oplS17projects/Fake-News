@@ -106,6 +106,15 @@ I just ask the user for the information we need to create fake new like the url 
 ### 1. Message Passing and Lambda
 I used message passing because I thought it would be the easiest way to a data members. Which need to use lambda functions. This allowed me to pass a message in to the object. (you can see some examples of that above) Also I used lambda when getting the length of the article you want to generate.
 ```racket
+;; gets input from users
+;; gets url
+(define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
+(printf  input-prompt)
+(newline)
+(define input-news (read-line))
+
+;; ... ask user for other information need to create the model
+
 (λ (message)
           (cond
             [(eq? 'obj message) MarkovModel]
