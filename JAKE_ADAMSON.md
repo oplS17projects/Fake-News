@@ -1,5 +1,6 @@
 # Markov Model, Unit Testing, User Input for Fake-News Project
-By Jake Adamson
+By Jake Adamson  
+   April 28, 2017
 - All code in this write up was written by me other than the code in the Dave's Code section.
 
 
