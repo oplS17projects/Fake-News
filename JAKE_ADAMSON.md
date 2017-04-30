@@ -88,6 +88,14 @@ I used unit testing to validate object members to make sure that they were what 
 - ### [User Input](https://github.com/oplS17projects/Fake-News/blob/master/main.rkt)
 I just ask the user for the information we need to create fake new like the url of the new story they would like to base there news off of. Also ask them for thing like the order with suggestrion and explination of what we were ask for. Also ask for things like length of the article. One thing special you could do was when prompted you could input -o for more information on the object you where creating.
 ```racket
+;; gets url from users
+(define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
+(printf  input-prompt)
+(newline)
+(define input-news (read-line))
+
+;; ... ask user for other information need to create the model
+
 (define (main)
   ;; sets up user input to a valid state for the markov model
   (begin (users-op message)
@@ -106,15 +114,6 @@ I just ask the user for the information we need to create fake new like the url 
 ### 1. Message Passing and Lambda
 I used message passing because I thought it would be the easiest way to a data members. Which need to use lambda functions. This allowed me to pass a message in to the object. (you can see some examples of that above) Also I used lambda when getting the length of the article you want to generate.
 ```racket
-;; gets input from users
-;; gets url
-(define input-prompt "Enter a URL of a news artcle that you would like to base yours on:  ")
-(printf  input-prompt)
-(newline)
-(define input-news (read-line))
-
-;; ... ask user for other information need to create the model
-
 (λ (message)
           (cond
             [(eq? 'obj message) MarkovModel]
