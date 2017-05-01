@@ -17,13 +17,14 @@ The code uses these libraries:
          xml/path
          net/url
          html-parsing
-         html)
-         
-(require web-server/servlet
+         html
+         web-server/servlet
          web-server/servlet-env)
 ```
 
 * The ```net/url``` library provides the ability to make REST-style https queries to the Google Drive API.
+* The ```web-server/servlet``` library allows us .
+* The ```html-parsing``` library allows us to create a parse trees of HTML source elements.
 
 # Key Code Excerpts
 
@@ -33,6 +34,7 @@ UMass Lowell's COMP.3010 Organization of Programming languages course.
 Five examples are shown and they are individually numbered. 
 
 ## 1. Map & Filter
+So when we give the program a URL, we then create a list of all html paragraph tags. Some of those paragraph tags have text in them, others have child html elements or links perhaps & such. Since we only want text that is actually news, we use filters to remove any lines that have the opening "<" asci charcter, as that signifies non text. Filters, maps, & list/string operations are a core proponent of functional programming. 
 ```racket
 ;establish url x expression from input string
 (define myurl (string->url input))  
