@@ -182,4 +182,4 @@ This is the main servlet body that generates the website. The css for it was wri
 #### Code that I wrote:
 - [get_url_return_news.rkt](https://github.com/oplS17projects/Fake-News/blob/master/get_url_return_news.rkt)
 - [web-scraper.rkt](https://github.com/oplS17projects/Fake-News/blob/master/web-scraper.rkt) 
-
+- [webscrape.css](https://github.com/oplS17projects/Fake-News/blob/master/css/webscrape.css) 
