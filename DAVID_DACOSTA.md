@@ -65,6 +65,7 @@ After all of the strings in our list of strings are what we want, we define this
 ## 3. Predicates
 There is a lot of auxilary noise on news websites that are in the form of text. This can be advertisements, comment sections or other articles and their thumbnails. These predicates were created to determine at what point in the source the scraper determines is news or isn't. How did we go about this? Well, paragraphs of text tend to be larger in terms of asci length. Therefore, we can determine that we don't want any text before the first significantly sized body of text. That's what length-means-news accounts for. As for the end of most news, we search for anything less then 50. This will usually be </body> or something of that nature. Predicates provide some abstraction as well as readability, I think, for the overall body of code, which I believe follows a consistent nomenclature. 
 ```racket
+;make sure we're only dealing with the news,
 (define (length-mean-news? teststring)
 (> (string-length teststring) 114) )
 
@@ -73,8 +74,8 @@ There is a lot of auxilary noise on news websites that are in the form of text. 
   ```
   
 ## 4. Procedural Abstraction / Filter / Lambda
+Another filter, this time defined with an anonymous function so that we can work on the elements of the list argument we pass it. This is the filter mentioned earlier that removes all strings that start with the asci "<" character. This is just one example of the abstraction used to aid modularity & readability in the code. 
 ```racket
-
 ;Filter to remove anything with a tag... as predicate only returns true if no tag
 (define (filter-tags-brute-force alist)
   (filter (lambda (n)
@@ -85,8 +86,8 @@ There is a lot of auxilary noise on news websites that are in the form of text. 
 ```
 
 ## 5. Helper Functions / Procedural Abstraction
+Frequently in functional programming, when writing a recursive function, we need helper functions to process end goal behavior. This function pre-news-noise that utilizes the predicates we describe above, has it's own helper function that calls the filter-tags-brute-force function also described above. What filter-pre-news-noise does is it checks for the first string that satisfies length-mean-news? and then calls filter pre news noise to return everything after that.
 ```racket
-;make sure we're only dealign with the news,
 ;get rid of anything before
 (define (filter-pre-news-noise mylistofstrings)
   (if (length-mean-news? (car mylistofstrings))
@@ -96,7 +97,7 @@ There is a lot of auxilary noise on news websites that are in the form of text. 
 ;helper function
 (define (now-parse-the-goods listofstrings)
   (filter-tags-brute-force listofstrings) )
-  ```
+```
   
 ```racket
 (define (mypage req)
