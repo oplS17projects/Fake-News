@@ -128,5 +128,44 @@ Frequently in functional programming, when writing a recursive function, we need
 (define (now-parse-the-goods listofstrings)
   (filter-tags-brute-force listofstrings) )
 ```
+
+# Early implementation
+You'll notice there's a file in the repo webscraper.rkt. Well that's where I spent a lot of the early figuring out days getting all of my half set up. The file runs pretty much on it's on. You give the user a url input, then it does some of the primitive filters I had before and outputs the strings after all of the dirty work is done onto a servlet. It just didn't have the Markov Model aspect implemented as Jake was working on it at the time. 
+
+# Auxiliary tech
+
+This is the main servlet body that generates the website. The css for it was written in Bootstrap because I'm a big fan of bootstrap. It's based on the freelancer template. So I really like how Functional Programmings indentation convention suits web code very well. Seems like their ideal for each other honestly in that regard. 
+  ```racket
+(define (mypage req)
+(response/xexpr
+`(html (head (title "UML INFOWARS II : Faker News!")
+                (link ((rel "stylesheet")
+                       (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+                       (type "text/css")))
+                (link ((rel "stylesheet")
+                       (href "/webscrape.css")
+                       (type "text/css")))
+                (script ((src "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")))
+                (script ((src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"))))
+          (body
+           (header 
+                   (div ((class "container"))
+                        (div ((class "row"))
+                             (div ((class "col-lg-12"))
+                                       (h1 ((class "sitename"))
+                                           "UML INFO WARS")
+                                       (h3 ((class "quote"))
+                                              " Democracy is but Mob Rule ") ) ) ) )
+                     
+           (hr ((class "line")))
+           (div ((class "container"))
+                (div ((class "row"))
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Real News"))
+                          ,mynews )
+                     (div ((class "col-md-6 col-centered"))
+                          (div ((class "text-centered"))
+                               (h3 "Fake News"))
+                          ,fakenews  )))   ))) )
 ```
-  
