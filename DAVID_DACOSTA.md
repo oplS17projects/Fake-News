@@ -130,7 +130,18 @@ Frequently in functional programming, when writing a recursive function, we need
 ```
 
 # Early implementation
-You'll notice there's a file in the repo webscraper.rkt. Well that's where I spent a lot of the early figuring out days getting all of my half set up. The file runs pretty much on it's on. You give the user a url input, then it does some of the primitive filters I had before and outputs the strings after all of the dirty work is done onto a servlet. It just didn't have the Markov Model aspect implemented as Jake was working on it at the time. 
+- ### [web-scraper.rkt](https://github.com/oplS17projects/Fake-News/blob/master/web-scraper.rkt)
+You'll notice there's a file in the repo web-scraper.rkt. Well that's where I spent a lot of the early figuring out days getting all of my half set up. The file runs pretty much on it's on. You give the user a url input in an input field based on the Meta Circular Evaluator assignment setup, then it does some of the primitive filters I had before and outputs the strings after all of the dirty work is done onto a servlet. It just didn't have the Markov Model aspect implemented as Jake was working on it at the time. The idea at the time was to also output the strings into a file for the markov model so it did that behavior as well.
+
+```racket
+(define (prompt-for-input string)
+  (newline) (newline) (display string))
+
+(define input-prompt "Enter REAL NEWS:  ")
+
+(define out (open-output-file "foodforMarkov.txt" #:exists 'replace))
+```
+
 
 # Auxiliary tech
 
