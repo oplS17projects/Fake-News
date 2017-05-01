@@ -50,6 +50,15 @@ So when we give the program a URL, we then create a list of all html paragraph t
 ;remove pre news body noise
 (define almostlist (filter-pre-news-noise postlist) )
 ```
+
+This function uses a map with an anonymous function and regular expressions to replace all JSON \u00AD instances in text that will sometimes show up. 
+```racket
+(define (remove-json1 alist)
+  (map (lambda (n)
+         (regexp-replace #rx"\u00AD" n "") )
+       alist))
+```
+
 ## 2. Recursion, list traversal
 After all of the strings in our list of strings are what we want, we define this list walk function that appends all of them into one final string object for the Markov Model; as it accepts strings. 
 ```racket
@@ -60,6 +69,27 @@ After all of the strings in our list of strings are what we want, we define this
     (if (null? lst)
         "\0"
         (string-append (car lst) (recurse-append (cdr lst)))))
+```
+
+An earlier version of the program actually needed to output to a file for the Markov Model object, as opposed to it accepting a single string. This other list walk satisfied the property of having to out put the list of strings we end up with after parsing into a file. 
+```racket
+;this proves to be a challenge
+;(define (list-walk-print listn)
+; (if (null? listn)
+;    " "
+;   (begin
+;    (fprintf out (car listn))
+;   (newline out)
+;  (list-walk-print (cdr listn)))))
+```
+
+Here is another example of recursion & list traversal used to return a list of all the text before the first string less then 50 characters, using the predicates we define to identify when a string is less then 50 characters in length. This is because most paragraph news text is significantly greater then this in length so we can use that property to properly gather news from websites. 
+```racket
+;get rid of anything after
+(define (cut-end-noise alist)
+  (if (is-this-the-end? (car alist))
+      '()
+      (cons (car alist) (cut-end-noise (cdr alist))) ) )
 ```
         
 ## 3. Predicates
@@ -98,39 +128,5 @@ Frequently in functional programming, when writing a recursive function, we need
 (define (now-parse-the-goods listofstrings)
   (filter-tags-brute-force listofstrings) )
 ```
-  
-```racket
-(define (mypage req)
-(response/xexpr
-`(html (head (title "UML INFOWARS II : Faker News!")
-                (link ((rel "stylesheet")
-                       (href "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-                       (type "text/css")))
-                (link ((rel "stylesheet")
-                       (href "/webscrape.css")
-                       (type "text/css")))
-                (script ((src "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")))
-                (script ((src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"))))
-          (body
-           (header 
-                   (div ((class "container"))
-                        (div ((class "row"))
-                             (div ((class "col-lg-12"))
-                                       (h1 ((class "sitename"))
-                                           "UML INFO WARS")
-                                       (h3 ((class "quote"))
-                                              " Democracy is but Mob Rule ") ) ) ) )
-                     
-           (hr ((class "line")))
-           (div ((class "container"))
-                (div ((class "row"))
-                     (div ((class "col-md-6 col-centered"))
-                          (div ((class "text-centered"))
-                               (h3 "Real News"))
-                          ,mynews )
-                     (div ((class "col-md-6 col-centered"))
-                          (div ((class "text-centered"))
-                               (h3 "Fake News"))
-                          ,fakenews  )))   ))) )
 ```
   
