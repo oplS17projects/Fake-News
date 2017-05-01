@@ -34,7 +34,7 @@ UMass Lowell's COMP.3010 Organization of Programming languages course.
 Five examples are shown and they are individually numbered. 
 
 ## 1. Map & Filter
-So when we give the program a URL, we then create a list of all html paragraph tags. Some of those paragraph tags have text in them, others have child html elements or links perhaps & such. Since we only want text that is actually news, we use filters to remove any lines that have the opening "<" asci charcter, as that signifies non text. Filters, maps, & list/string operations are a core proponent of functional programming. 
+So when we give the program a URL, we then create a list of all html paragraph tags. Then we have end up with a list of html objects, so we use the map function to turn these html objects into strings. Now, we can do asci manipulation. So, some of those paragraph strings will now have text in them, others have child html elements or links perhaps & such. Since we only want text that is actually news, we use filters to remove any lines that have the opening "<" asci charcter, as that signifies non text. Filters, maps, & list/string operations are a core proponent of functional programming. 
 ```racket
 ;establish url x expression from input string
 (define myurl (string->url input))  
@@ -51,6 +51,7 @@ So when we give the program a URL, we then create a list of all html paragraph t
 (define almostlist (filter-pre-news-noise postlist) )
 ```
 ## 2. Recursion, list traversal
+After all of the strings in our list of strings are what we want, we define this list walk function that appends all of them into one final string object for the Markov Model; as it accepts strings. 
 ```racket
 ;Finally build final string to return
 (define mynews (recurse-append stringlist ) )
@@ -62,6 +63,7 @@ So when we give the program a URL, we then create a list of all html paragraph t
 ```
         
 ## 3. Predicates
+There is a lot of auxilary noise on news websites that are in the form of text. This can be advertisements, comment sections or other articles and their thumbnails. These predicates were created to determine at what point in the source the scraper determines is news or isn't. How did we go about this? Well, paragraphs of text tend to be larger in terms of asci length. Therefore, we can determine that we don't want any text before the first significantly sized body of text. That's what length-means-news accounts for. As for the end of most news, we search for anything less then 50. This will usually be </body> or something of that nature. Predicates provide some abstraction as well as readability, I think, for the overall body of code, which I believe follows a consistent nomenclature. 
 ```racket
 (define (length-mean-news? teststring)
 (> (string-length teststring) 114) )
