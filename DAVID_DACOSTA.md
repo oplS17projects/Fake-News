@@ -4,6 +4,9 @@
 ### April 22, 2017
 
 # Overview
+- ### [Web Parsing](https://github.com/oplS17projects/Fake-News/blob/master/get_url_return_news.rkt)
+
+We decided to generate fake news by taking input as a news article that we got from the internet. The first step in the process was to parse a web page. A key part and one of the hardest parts of the parsing was making sure that the news article was a string with no weird html junk on it. Then once we got a clean string we give the news to the Markov model which takes the news as a string and an order which is the length of the kgrams. The kgrams are substrings of the article which have the same length as the order. You can see a list of the kgrams in the model by passing the object the symbol 'kgram. When the model is created, it breaks the article into kgrams and alphabet. And using those two things it generates text. It generates text by taking kgram and randomly choosing a letter to follow it based on the probity that the character would follow that kgram. (See image bellow to see it create the model piece by piece). And as you can see I used a tagged list when i made the object to make it easier to get to data that was need for other parts.
 
 **Authorship note:** All of the code described here was written by myself.
 # Libraries Used
@@ -56,13 +59,17 @@ Five examples are shown and they are individually numbered.
         (string-append (car lst) (recurse-append (cdr lst)))))
 ```
         
-## 3. Procedural Abstraction / Filter / Lambda
+## 3. Predicates
 ```racket
 (define (length-mean-news? teststring)
 (> (string-length teststring) 114) )
 
 (define (is-this-the-end? teststring)
   (< (string-length teststring) 50) )
+  ```
+  
+## 4. Procedural Abstraction / Filter / Lambda
+```racket
 
 ;Filter to remove anything with a tag... as predicate only returns true if no tag
 (define (filter-tags-brute-force alist)
@@ -73,7 +80,7 @@ Five examples are shown and they are individually numbered.
           alist))
 ```
 
-## 4. Helper Functions / Procedural Abstraction
+## 5. Helper Functions / Procedural Abstraction
 ```racket
 ;make sure we're only dealign with the news,
 ;get rid of anything before
